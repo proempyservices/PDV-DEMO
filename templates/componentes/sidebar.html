@@ -1,0 +1,255 @@
+<!-- ===========================
+     SIDEBAR
+============================ -->
+
+<aside class="sidebar">
+
+    <!-- LOGO -->
+    <div class="logo">
+
+        <div class="logo-icon">
+            <i class="bi bi-cup-straw"></i>
+        </div>
+
+        <div>
+
+            <h2>ProemPy Services</h2>
+
+        </div>
+
+    </div>
+
+
+    <!-- PERFIL -->
+
+    <div class="sidebar-profile">
+
+        <div class="avatar">
+
+            <i class="bi bi-person-fill"></i>
+
+        </div>
+
+        <div class="profile-info">
+
+            <strong id="profile-name">Visitante</strong>
+
+            <small id="profile-email"></small>
+
+        </div>
+
+    </div>
+
+
+    <!-- MENU -->
+
+    <nav class="sidebar-menu">
+
+
+        <small class="menu-title">
+            Dashboard
+        </small>
+
+
+        <a href="#" class="active">
+
+            <i class="bi bi-house-door"></i>
+
+            Dashboard
+
+        </a>
+
+
+
+        <small class="menu-title">
+            Vendas
+        </small>
+
+
+
+        <a
+        id="menu-nova-venda"
+        onclick="abrirVenda()">
+
+            <i class="bi bi-cart"></i>
+            Nova Venda
+
+        </a>
+
+
+
+        <a id="menu-historico"
+           href="#"
+           onclick="abrirHistoricoVendas()">
+
+            <i class="bi bi-receipt"></i>
+
+            Histórico de Vendas
+
+        </a>
+
+
+        <a href="#"
+           id="menu-categorias"
+           onclick="abrirCategorias()"
+           style="display:none;">
+
+            <i class="bi bi-grid"></i>
+
+            Categorias
+
+        </a>
+
+        <small class="menu-title">
+            Produtos
+        </small>
+
+
+
+        <a href="#"
+           id="menu-produtos"
+           onclick="abrirProdutos()"
+           style="display:none;">
+
+            <i class="bi bi-box-seam"></i>
+
+            Produtos
+
+        </a>
+
+
+
+
+        <a id="menu-stock"
+           onclick="abrirStock()"
+           style="display:none;">
+
+            <i class="bi bi-box"></i>
+            Stock
+
+        </a>
+
+
+
+
+        <small class="menu-title">
+            Caixa
+        </small>
+
+
+
+        <a href="#" onclick="abrirCaixa()">
+
+            <i class="bi bi-arrow-left-right"></i>
+
+            Movimentações
+
+        </a>
+
+
+
+
+
+        <li id="menu-despesas">
+
+            <a href="#" onclick="abrirDespesas()">
+
+                <i class="bi bi-cash-stack"></i>
+
+                Despesas
+
+            </a>
+
+        </li>
+
+
+
+
+        <small class="menu-title">
+            Relatórios
+        </small>
+
+
+
+        <a href="#">
+
+            <i class="bi bi-bar-chart"></i>
+
+            Relatórios
+
+        </a>
+
+
+
+
+
+        <small class="menu-title">
+            Sistema
+        </small>
+
+
+
+
+        <a
+            href="javascript:void(0)"
+            id="menu-configuracoes"
+            onclick="abrirModalConfiguracoes()"
+            class="sidebar-link"
+            style="display:none;"
+        >
+            <i class="bi bi-gear"></i>
+
+            <span>
+                Configurações
+            </span>
+        </a>
+
+
+
+
+        <a href="#"
+           id="menu-usuarios"
+           onclick="abrirUsuarios()"
+           style="display:none;">
+
+
+            <i class="bi bi-person-plus"></i>
+
+            Usuários
+
+
+        </a>
+
+
+
+
+    </nav>
+
+
+
+
+    <!-- SAIR -->
+
+    <div class="sidebar-footer">
+
+
+        <a href="#" onclick="logout()">
+
+            <i class="bi bi-box-arrow-right"></i>
+
+            Sair
+
+        </a>
+
+    </div>
+    <div class="sidebar-extra">
+
+        <small>
+            ........................................................................
+        </small>
+
+    </div>
+
+
+
+</aside>

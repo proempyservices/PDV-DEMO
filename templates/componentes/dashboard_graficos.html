@@ -1,0 +1,132 @@
+<<div class="dashboard-card">
+
+    <div class="card-header">
+
+        <h4>
+            Resumo de Vendas
+        </h4>
+
+        <select
+            id="filtro-grafico"
+            class="form-select"
+        >
+
+            <option value="dia">
+                Hoje
+            </option>
+
+            <option value="semana">
+                Esta semana
+            </option>
+
+            <option value="mes">
+                Este mês
+            </option>
+
+            <option value="ano">
+                Este ano
+            </option>
+
+        </select>
+
+    </div>
+
+
+    <div
+        style="
+            position: relative;
+            width: 100%;
+            height: 300px;
+        "
+    >
+
+        <canvas
+            id="salesChart"
+        ></canvas>
+
+    </div>
+
+
+    <div class="sales-footer">
+
+        <div>
+
+            <small>
+                TOTAL DE VENDAS
+            </small>
+
+            <h4 id="grafico-total-vendas">
+                0,00 MT
+            </h4>
+
+        </div>
+
+
+        <div>
+
+            <small>
+                TICKET MÉDIO
+            </small>
+
+            <h4 id="grafico-ticket-medio">
+                0,00 MT
+            </h4>
+
+        </div>
+
+
+        <div>
+
+            <small>
+                Nº DE VENDAS
+            </small>
+
+            <h4 id="grafico-numero-vendas">
+                0
+            </h4>
+
+        </div>
+
+    </div>
+
+</div>
+
+
+
+    <!-- =================================
+         DIREITA
+    ================================== -->
+
+    <div class="right-column">
+
+
+        <div class="dashboard-card">
+
+
+            <!-- =================================
+                 CABEÇALHO
+            ================================== -->
+
+            <div class="card-header">
+
+                <h4>
+                    Alertas de Produtos com Baixo Stock
+                </h4>
+
+            </div>
+
+
+            <!-- =================================
+                 LISTA DE PRODUTOS
+            ================================== -->
+
+            <div id="baixo-stock-list"></div>
+
+
+        </div>
+
+
+    </div>
+
+
+</section>

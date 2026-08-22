@@ -1,0 +1,67 @@
+<!-- =========================================
+MODAL DETALHES DAS VENDAS
+========================================= -->
+
+<div
+id="modal-vendedores"
+class="usuarios-modal">
+
+    <div class="dashboard-card">
+
+
+        <div class="d-flex justify-content-between align-items-center">
+
+            <h4>
+                Detalhes das Vendas
+            </h4>
+
+
+            <button
+            class="btn btn-danger"
+            onclick="fecharModalVendedores()">
+
+                X
+
+            </button>
+
+
+        </div>
+
+
+        <hr>
+
+
+        <!-- NOVO: FILTRO DE DATA -->
+
+        <div class="mb-3">
+
+            <label>
+                Pesquisar por data:
+            </label>
+
+
+            <input
+            type="text"
+            id="filtro-data-vendas"
+            class="form-control"
+            placeholder="dd/mm/aa"
+            onkeyup="filtrarVendasData()">
+
+        </div>
+
+
+        <hr>
+
+
+
+        <!-- A TABELA CONTINUA AQUI -->
+
+        <div id="tabela-vendedores">
+
+        </div>
+
+
+
+    </div>
+
+</div>

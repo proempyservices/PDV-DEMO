@@ -1,0 +1,2061 @@
+<!-- =========================================================
+     MODAL CONFIGURAÇÕES
+========================================================= -->
+
+<div
+    id="modal-configuracoes"
+    class="modal-configuracoes"
+>
+
+    <div class="modal-configuracoes-box">
+
+        <!-- =================================================
+             CABEÇALHO
+        ================================================== -->
+
+        <div class="modal-configuracoes-header">
+
+            <div class="configuracoes-titulo">
+
+                <div class="configuracoes-icone">
+
+                    <i class="bi bi-gear-fill"></i>
+
+                </div>
+
+                <div>
+
+                    <h3>
+                        Configurações
+                    </h3>
+
+                    <span>
+                        Configurações do sistema
+                    </span>
+
+                </div>
+
+            </div>
+
+
+            <button
+                type="button"
+                class="configuracoes-fechar"
+                onclick="fecharModalConfiguracoes()"
+                aria-label="Fechar"
+            >
+
+                <i class="bi bi-x-lg"></i>
+
+            </button>
+
+        </div>
+
+
+
+        <!-- =================================================
+             CORPO
+        ================================================== -->
+
+        <div class="modal-configuracoes-body">
+
+
+            <!-- =================================================
+                 CARD
+            ================================================== -->
+
+            <div class="configuracao-card">
+
+
+                <!-- ÍCONE -->
+
+                <div class="configuracao-card-icon">
+
+                    <i class="bi bi-cash-coin"></i>
+
+                </div>
+
+
+
+                <!-- INFORMAÇÕES -->
+
+                <div class="configuracao-card-info">
+
+
+                    <h4>
+                        Percentual para Uso Pessoal
+                    </h4>
+
+
+                    <p>
+
+                        Defina a percentagem dos lucros das suas
+                        vendas que será destinada para uso pessoal.
+                        O sistema utilizará este valor para calcular
+                        automaticamente a parte do lucro reservada
+                        para você.
+
+                    </p>
+
+
+
+                    <!-- =================================================
+                         PERCENTUAL ACTUAL
+                    ================================================== -->
+
+                    <div class="percentual-atual-box">
+
+
+                        <div class="percentual-atual-info">
+
+                            <span class="percentual-atual-label">
+
+                                Percentual actualmente definido
+
+                            </span>
+
+
+                            <small>
+
+                                Clique no botão para consultar
+                                o valor salvo no sistema.
+
+                            </small>
+
+                        </div>
+
+
+
+                        <div class="percentual-atual-valor">
+
+                            <strong
+                                class="valor-percentual-atual"
+                            >
+                                --
+                            </strong>
+
+                            <span
+                                class="simbolo-percentual-atual"
+                            >
+                                %
+                            </span>
+
+                        </div>
+
+                    </div>
+
+
+
+                    <!-- =================================================
+                         BOTÃO CONSULTAR
+                    ================================================== -->
+
+                    <button
+                        type="button"
+                        id="btn-ver-percentual"
+                        class="btn-ver-percentual"
+                        onclick="verPercentualAtual()"
+                    >
+
+                        <i class="bi bi-eye"></i>
+
+                        Ver percentagem actual
+
+                    </button>
+
+
+
+                    <!-- =================================================
+                         NOVO PERCENTUAL
+                    ================================================== -->
+
+                    <label
+                        for="percentual-saque"
+                        class="percentual-label"
+                    >
+
+                        Definir novo percentual
+
+                    </label>
+
+
+                    <div class="percentual-input">
+
+                        <input
+                            type="number"
+                            id="percentual-saque"
+                            min="0"
+                            max="100"
+                            step="0.01"
+                            placeholder="Digite o novo percentual"
+                        >
+
+                        <span>
+                            %
+                        </span>
+
+                    </div>
+
+
+                    <small class="percentual-ajuda">
+
+                        Informe um valor entre 0% e 100%.
+
+                    </small>
+
+                </div>
+
+            </div>
+
+
+
+            <!-- =================================================
+                 MENSAGEM
+            ================================================== -->
+
+            <div
+                id="configuracoes-mensagem"
+                class="configuracoes-mensagem"
+            ></div>
+
+
+        </div>
+
+
+
+        <!-- =================================================
+             RODAPÉ
+        ================================================== -->
+
+        <div class="modal-configuracoes-footer">
+
+
+            <button
+                type="button"
+                class="btn-config-cancelar"
+                onclick="fecharModalConfiguracoes()"
+            >
+
+                Cancelar
+
+            </button>
+
+
+            <button
+                type="button"
+                id="btn-salvar-configuracoes"
+                class="btn-config-salvar"
+                onclick="salvarConfiguracoes()"
+            >
+
+                <i class="bi bi-check-lg"></i>
+
+                Salvar
+
+            </button>
+
+
+        </div>
+
+
+    </div>
+
+</div>
+
+
+
+<!-- =========================================================
+     CSS
+========================================================= -->
+
+<style>
+
+/* =========================================================
+   FUNDO
+========================================================= */
+
+.modal-configuracoes {
+
+    position: fixed;
+
+    inset: 0;
+
+    display: none;
+
+    align-items: center;
+
+    justify-content: center;
+
+    padding: 20px;
+
+    background:
+        rgba(15, 23, 42, .65);
+
+    backdrop-filter:
+        blur(5px);
+
+    -webkit-backdrop-filter:
+        blur(5px);
+
+    z-index: 99999;
+
+}
+
+
+
+/* =========================================================
+   CAIXA
+========================================================= */
+
+.modal-configuracoes-box {
+
+    width: 100%;
+
+    max-width: 560px;
+
+    max-height:
+        calc(100vh - 40px);
+
+    display: flex;
+
+    flex-direction: column;
+
+    overflow: hidden;
+
+    background: #ffffff;
+
+    border-radius: 18px;
+
+    box-shadow:
+        0 25px 70px
+        rgba(0,0,0,.30);
+
+    animation:
+        aparecerConfiguracoes
+        .2s ease;
+
+}
+
+
+
+/* =========================================================
+   ANIMAÇÃO
+========================================================= */
+
+@keyframes aparecerConfiguracoes {
+
+    from {
+
+        opacity: 0;
+
+        transform:
+            translateY(-20px)
+            scale(.97);
+
+    }
+
+    to {
+
+        opacity: 1;
+
+        transform:
+            translateY(0)
+            scale(1);
+
+    }
+
+}
+
+
+
+/* =========================================================
+   CABEÇALHO
+========================================================= */
+
+.modal-configuracoes-header {
+
+    display: flex;
+
+    align-items: center;
+
+    justify-content: space-between;
+
+    flex-shrink: 0;
+
+    padding: 20px 24px;
+
+    border-bottom:
+        1px solid #e5e7eb;
+
+}
+
+
+
+.configuracoes-titulo {
+
+    display: flex;
+
+    align-items: center;
+
+    gap: 12px;
+
+}
+
+
+
+.configuracoes-icone {
+
+    width: 42px;
+
+    height: 42px;
+
+    display: flex;
+
+    align-items: center;
+
+    justify-content: center;
+
+    flex-shrink: 0;
+
+    border-radius: 11px;
+
+    background: #fff7ed;
+
+    color: #ea580c;
+
+    font-size: 19px;
+
+}
+
+
+
+.configuracoes-titulo h3 {
+
+    margin: 0;
+
+    color: #1f2937;
+
+    font-size: 19px;
+
+    font-weight: 700;
+
+}
+
+
+
+.configuracoes-titulo span {
+
+    display: block;
+
+    margin-top: 3px;
+
+    color: #9ca3af;
+
+    font-size: 13px;
+
+}
+
+
+
+/* =========================================================
+   FECHAR
+========================================================= */
+
+.configuracoes-fechar {
+
+    width: 36px;
+
+    height: 36px;
+
+    display: flex;
+
+    align-items: center;
+
+    justify-content: center;
+
+    flex-shrink: 0;
+
+    border: 0;
+
+    border-radius: 9px;
+
+    background: transparent;
+
+    color: #6b7280;
+
+    cursor: pointer;
+
+    font-size: 16px;
+
+    transition:
+        background .15s ease,
+        color .15s ease;
+
+}
+
+
+
+.configuracoes-fechar:hover {
+
+    background: #f3f4f6;
+
+    color: #111827;
+
+}
+
+
+
+/* =========================================================
+   CORPO
+========================================================= */
+
+.modal-configuracoes-body {
+
+    padding: 24px;
+
+    overflow-y: auto;
+
+}
+
+
+
+/* =========================================================
+   CARD
+========================================================= */
+
+.configuracao-card {
+
+    display: flex;
+
+    gap: 16px;
+
+    padding: 18px;
+
+    border:
+        1px solid #e5e7eb;
+
+    border-radius: 14px;
+
+    background: #fafafa;
+
+}
+
+
+
+.configuracao-card-icon {
+
+    width: 42px;
+
+    height: 42px;
+
+    display: flex;
+
+    align-items: center;
+
+    justify-content: center;
+
+    flex-shrink: 0;
+
+    border-radius: 10px;
+
+    background: #ecfdf5;
+
+    color: #059669;
+
+    font-size: 19px;
+
+}
+
+
+
+.configuracao-card-info {
+
+    flex: 1;
+
+    min-width: 0;
+
+}
+
+
+
+.configuracao-card-info h4 {
+
+    margin: 0;
+
+    color: #1f2937;
+
+    font-size: 16px;
+
+    font-weight: 700;
+
+}
+
+
+
+.configuracao-card-info p {
+
+    margin:
+        7px 0 17px;
+
+    color: #6b7280;
+
+    font-size: 13px;
+
+    line-height: 1.6;
+
+}
+
+
+
+/* =========================================================
+   PERCENTUAL ACTUAL
+========================================================= */
+
+.percentual-atual-box {
+
+    display: flex;
+
+    align-items: center;
+
+    justify-content: space-between;
+
+    gap: 15px;
+
+    margin-bottom: 12px;
+
+    padding: 14px 16px;
+
+    background: #fff7ed;
+
+    border:
+        1px solid #fed7aa;
+
+    border-radius: 10px;
+
+}
+
+
+
+.percentual-atual-info {
+
+    min-width: 0;
+
+}
+
+
+
+.percentual-atual-label {
+
+    display: block;
+
+    color: #374151;
+
+    font-size: 13px;
+
+    font-weight: 700;
+
+}
+
+
+
+.percentual-atual-info small {
+
+    display: block;
+
+    margin-top: 3px;
+
+    color: #9ca3af;
+
+    font-size: 11px;
+
+    line-height: 1.4;
+
+}
+
+
+
+.percentual-atual-valor {
+
+    display: flex;
+
+    align-items: center;
+
+    justify-content: flex-end;
+
+    flex-shrink: 0;
+
+}
+
+
+
+.valor-percentual-atual {
+
+    color: #ea580c;
+
+    font-size: 26px;
+
+    font-weight: 800;
+
+}
+
+
+
+.simbolo-percentual-atual {
+
+    margin-left: 2px;
+
+    color: #ea580c;
+
+    font-size: 24px;
+
+    font-weight: 800;
+
+}
+
+
+
+/* =========================================================
+   BOTÃO VER PERCENTUAL
+========================================================= */
+
+.btn-ver-percentual {
+
+    width: 100%;
+
+    height: 44px;
+
+    display: flex;
+
+    align-items: center;
+
+    justify-content: center;
+
+    gap: 8px;
+
+    margin-bottom: 20px;
+
+    border: 1px solid #fed7aa;
+
+    border-radius: 9px;
+
+    background: #fff7ed;
+
+    color: #ea580c;
+
+    font-size: 13px;
+
+    font-weight: 700;
+
+    cursor: pointer;
+
+    transition:
+        background .15s ease,
+        border-color .15s ease,
+        color .15s ease;
+
+}
+
+
+
+.btn-ver-percentual:hover {
+
+    background: #ffedd5;
+
+    border-color: #fdba74;
+
+}
+
+
+
+.btn-ver-percentual:disabled {
+
+    opacity: .6;
+
+    cursor: not-allowed;
+
+}
+
+
+
+/* =========================================================
+   LABEL
+========================================================= */
+
+.percentual-label {
+
+    display: block;
+
+    margin-bottom: 7px;
+
+    color: #374151;
+
+    font-size: 13px;
+
+    font-weight: 600;
+
+}
+
+
+
+/* =========================================================
+   INPUT
+========================================================= */
+
+.percentual-input {
+
+    display: flex;
+
+    align-items: center;
+
+    width: 100%;
+
+    height: 48px;
+
+    box-sizing: border-box;
+
+    overflow: hidden;
+
+    background: #ffffff;
+
+    border:
+        1px solid #d1d5db;
+
+    border-radius: 10px;
+
+    transition:
+        border-color .15s ease,
+        box-shadow .15s ease;
+
+}
+
+
+
+.percentual-input:focus-within {
+
+    border-color: #ea580c;
+
+    box-shadow:
+        0 0 0 3px
+        rgba(234,88,12,.10);
+
+}
+
+
+
+.percentual-input input {
+
+    flex: 1;
+
+    width: 100%;
+
+    min-width: 0;
+
+    height: 100%;
+
+    box-sizing: border-box;
+
+    padding:
+        0 14px;
+
+    border: 0;
+
+    outline: 0;
+
+    background: #ffffff;
+
+    color: #111827;
+
+    font-size: 18px;
+
+    font-weight: 600;
+
+}
+
+
+
+.percentual-input input::placeholder {
+
+    color: #9ca3af;
+
+    font-size: 14px;
+
+    font-weight: 400;
+
+}
+
+
+
+.percentual-input span {
+
+    height: 100%;
+
+    display: flex;
+
+    align-items: center;
+
+    padding:
+        0 15px;
+
+    background: #f9fafb;
+
+    border-left:
+        1px solid #e5e7eb;
+
+    color: #6b7280;
+
+    font-size: 17px;
+
+    font-weight: 700;
+
+}
+
+
+
+/* =========================================================
+   AJUDA
+========================================================= */
+
+.percentual-ajuda {
+
+    display: block;
+
+    margin-top: 7px;
+
+    color: #9ca3af;
+
+    font-size: 11px;
+
+}
+
+
+
+/* =========================================================
+   MENSAGEM
+========================================================= */
+
+.configuracoes-mensagem {
+
+    display: none;
+
+    margin-top: 15px;
+
+    padding: 12px 14px;
+
+    border-radius: 9px;
+
+    font-size: 13px;
+
+    line-height: 1.5;
+
+}
+
+
+
+.configuracoes-mensagem.sucesso {
+
+    display: block;
+
+    color: #047857;
+
+    background: #ecfdf5;
+
+    border:
+        1px solid #a7f3d0;
+
+}
+
+
+
+.configuracoes-mensagem.erro {
+
+    display: block;
+
+    color: #b91c1c;
+
+    background: #fef2f2;
+
+    border:
+        1px solid #fecaca;
+
+}
+
+
+
+/* =========================================================
+   RODAPÉ
+========================================================= */
+
+.modal-configuracoes-footer {
+
+    display: flex;
+
+    justify-content: flex-end;
+
+    gap: 10px;
+
+    flex-shrink: 0;
+
+    padding: 18px 24px;
+
+    border-top:
+        1px solid #e5e7eb;
+
+}
+
+
+
+/* =========================================================
+   BOTÕES
+========================================================= */
+
+.btn-config-cancelar,
+.btn-config-salvar {
+
+    min-width: 100px;
+
+    padding:
+        11px 18px;
+
+    border: 0;
+
+    border-radius: 9px;
+
+    font-size: 14px;
+
+    font-weight: 600;
+
+    cursor: pointer;
+
+    transition:
+        background .15s ease,
+        opacity .15s ease;
+
+}
+
+
+
+.btn-config-cancelar {
+
+    background: #f3f4f6;
+
+    color: #4b5563;
+
+}
+
+
+
+.btn-config-cancelar:hover {
+
+    background: #e5e7eb;
+
+}
+
+
+
+.btn-config-salvar {
+
+    background: #ea580c;
+
+    color: #ffffff;
+
+}
+
+
+
+.btn-config-salvar:hover {
+
+    background: #c2410c;
+
+}
+
+
+
+.btn-config-salvar:disabled {
+
+    opacity: .6;
+
+    cursor: not-allowed;
+
+}
+
+
+
+/* =========================================================
+   RESPONSIVO
+========================================================= */
+
+@media(max-width:600px) {
+
+    .modal-configuracoes {
+
+        padding: 12px;
+
+    }
+
+
+    .modal-configuracoes-box {
+
+        max-height:
+            calc(100vh - 24px);
+
+        border-radius: 14px;
+
+    }
+
+
+    .modal-configuracoes-header {
+
+        padding: 18px;
+
+    }
+
+
+    .modal-configuracoes-body {
+
+        padding: 18px;
+
+    }
+
+
+    .configuracao-card {
+
+        padding: 15px;
+
+        gap: 12px;
+
+    }
+
+
+    .percentual-atual-box {
+
+        padding: 13px;
+
+    }
+
+
+    .valor-percentual-atual,
+    .simbolo-percentual-atual {
+
+        font-size: 21px;
+
+    }
+
+
+    .modal-configuracoes-footer {
+
+        padding: 16px 18px;
+
+    }
+
+
+    .btn-config-cancelar,
+    .btn-config-salvar {
+
+        flex: 1;
+
+    }
+
+}
+
+</style>
+
+
+
+<!-- =========================================================
+     JAVASCRIPT
+========================================================= -->
+
+<script>
+
+
+/* =========================================================
+   ABRIR MODAL
+========================================================= */
+
+function abrirModalConfiguracoes() {
+
+    console.log(
+        "ABRINDO MODAL CONFIGURAÇÕES"
+    );
+
+
+    const modal =
+        document.getElementById(
+            "modal-configuracoes"
+        );
+
+
+    if (!modal) {
+
+        console.error(
+            "ERRO: modal-configuracoes não encontrado."
+        );
+
+        return;
+
+    }
+
+
+    /*
+    ---------------------------------------------------------
+    ABRIR
+    ---------------------------------------------------------
+    */
+
+    modal.style.display =
+        "flex";
+
+
+    /*
+    ---------------------------------------------------------
+    NÃO BUSCA NADA AUTOMATICAMENTE
+    ---------------------------------------------------------
+    */
+
+    const valorAtual =
+        modal.querySelector(
+            ".valor-percentual-atual"
+        );
+
+
+    if (valorAtual) {
+
+        valorAtual.textContent =
+            "--";
+
+    }
+
+
+    /*
+    ---------------------------------------------------------
+    LIMPAR MENSAGEM
+    ---------------------------------------------------------
+    */
+
+    const mensagem =
+        modal.querySelector(
+            "#configuracoes-mensagem"
+        );
+
+
+    if (mensagem) {
+
+        mensagem.textContent =
+            "";
+
+        mensagem.style.display =
+            "none";
+
+        mensagem.className =
+            "configuracoes-mensagem";
+
+    }
+
+
+    /*
+    ---------------------------------------------------------
+    LIMPAR INPUT
+    ---------------------------------------------------------
+    */
+
+    const input =
+        modal.querySelector(
+            "#percentual-saque"
+        );
+
+
+    if (input) {
+
+        input.value =
+            "";
+
+    }
+
+}
+
+
+
+/* =========================================================
+   VER PERCENTAGEM ACTUAL
+========================================================= */
+
+async function verPercentualAtual() {
+
+    console.log(
+        "======================================"
+    );
+
+    console.log(
+        "CONSULTANDO PERCENTAGEM ACTUAL"
+    );
+
+    console.log(
+        "======================================"
+    );
+
+
+    /*
+    ---------------------------------------------------------
+    MODAL
+    ---------------------------------------------------------
+    */
+
+    const modal =
+        document.getElementById(
+            "modal-configuracoes"
+        );
+
+
+    if (!modal) {
+
+        console.error(
+            "Modal não encontrado."
+        );
+
+        return;
+
+    }
+
+
+    /*
+    ---------------------------------------------------------
+    ELEMENTOS
+    ---------------------------------------------------------
+    */
+
+    const valorAtual =
+        modal.querySelector(
+            ".valor-percentual-atual"
+        );
+
+
+    const botao =
+        modal.querySelector(
+            "#btn-ver-percentual"
+        );
+
+
+    /*
+    ---------------------------------------------------------
+    VERIFICAR API
+    ---------------------------------------------------------
+    */
+
+    if (
+        typeof API === "undefined"
+    ) {
+
+        console.error(
+            "A variável API não está definida."
+        );
+
+        mostrarMensagemConfiguracoes(
+            "A configuração da API não foi encontrada.",
+            "erro"
+        );
+
+        return;
+
+    }
+
+
+    /*
+    ---------------------------------------------------------
+    LOADING
+    ---------------------------------------------------------
+    */
+
+    if (botao) {
+
+        botao.disabled =
+            true;
+
+        botao.innerHTML = `
+            <i class="bi bi-hourglass-split"></i>
+            Consultando...
+        `;
+
+    }
+
+
+    if (valorAtual) {
+
+        valorAtual.textContent =
+            "...";
+
+    }
+
+
+    try {
+
+        /*
+        =====================================================
+        URL
+        =====================================================
+        */
+
+        const url =
+            API + "/configuracoes/";
+
+
+        console.log(
+            "ROTA:",
+            url
+        );
+
+
+        /*
+        =====================================================
+        GET
+        =====================================================
+        */
+
+        const resposta =
+            await fetch(
+                url,
+                {
+
+                    method:
+                        "GET",
+
+                    headers: {
+
+                        "Accept":
+                            "application/json"
+
+                    },
+
+                    cache:
+                        "no-store"
+
+                }
+            );
+
+
+        console.log(
+            "STATUS:",
+            resposta.status
+        );
+
+
+        /*
+        =====================================================
+        LER JSON
+        =====================================================
+        */
+
+        const dados =
+            await resposta.json();
+
+
+        console.log(
+            "CONFIGURAÇÃO RECEBIDA:"
+        );
+
+        console.log(
+            dados
+        );
+
+
+        /*
+        =====================================================
+        VERIFICAR ERRO
+        =====================================================
+        */
+
+        if (!resposta.ok) {
+
+            throw new Error(
+                dados.detail ||
+                "Erro ao buscar configuração."
+            );
+
+        }
+
+
+        /*
+        =====================================================
+        PEGAR PERCENTUAL
+        =====================================================
+        */
+
+        const percentual =
+            Number(
+                dados.percentual_saque
+            );
+
+
+        console.log(
+            "PERCENTUAL:",
+            percentual
+        );
+
+
+        /*
+        =====================================================
+        VALIDAR
+        =====================================================
+        */
+
+        if (
+            Number.isNaN(percentual)
+        ) {
+
+            throw new Error(
+                "O percentual recebido da API é inválido."
+            );
+
+        }
+
+
+        /*
+        =====================================================
+        MOSTRAR NA TELA
+        =====================================================
+        */
+
+        if (valorAtual) {
+
+            valorAtual.textContent =
+                percentual;
+
+        }
+
+
+        /*
+        =====================================================
+        MENSAGEM
+        =====================================================
+        */
+
+        mostrarMensagemConfiguracoes(
+            "Percentagem actual carregada com sucesso.",
+            "sucesso"
+        );
+
+    }
+
+
+    catch (erro) {
+
+        console.error(
+            "ERRO AO CONSULTAR PERCENTAGEM:",
+            erro
+        );
+
+
+        if (valorAtual) {
+
+            valorAtual.textContent =
+                "--";
+
+        }
+
+
+        mostrarMensagemConfiguracoes(
+            erro.message,
+            "erro"
+        );
+
+    }
+
+
+    finally {
+
+        /*
+        -----------------------------------------------------
+        RESTAURAR BOTÃO
+        -----------------------------------------------------
+        */
+
+        if (botao) {
+
+            botao.disabled =
+                false;
+
+            botao.innerHTML = `
+                <i class="bi bi-eye"></i>
+                Ver percentagem actual
+            `;
+
+        }
+
+    }
+
+}
+
+
+
+/* =========================================================
+   SALVAR CONFIGURAÇÃO
+========================================================= */
+
+async function salvarConfiguracoes() {
+
+    console.log(
+        "SALVANDO CONFIGURAÇÃO..."
+    );
+
+
+    const modal =
+        document.getElementById(
+            "modal-configuracoes"
+        );
+
+
+    if (!modal) {
+
+        return;
+
+    }
+
+
+    const input =
+        modal.querySelector(
+            "#percentual-saque"
+        );
+
+
+    const botao =
+        modal.querySelector(
+            "#btn-salvar-configuracoes"
+        );
+
+
+    const valorAtual =
+        modal.querySelector(
+            ".valor-percentual-atual"
+        );
+
+
+    /*
+    =========================================================
+    VALIDAR INPUT
+    =========================================================
+    */
+
+    if (!input) {
+
+        return;
+
+    }
+
+
+    if (
+        input.value.trim() === ""
+    ) {
+
+        mostrarMensagemConfiguracoes(
+            "Digite o novo percentual.",
+            "erro"
+        );
+
+        input.focus();
+
+        return;
+
+    }
+
+
+    /*
+    =========================================================
+    CONVERTER
+    =========================================================
+    */
+
+    const percentual =
+        Number(
+            input.value
+        );
+
+
+    /*
+    =========================================================
+    VALIDAR
+    =========================================================
+    */
+
+    if (
+        Number.isNaN(percentual)
+    ) {
+
+        mostrarMensagemConfiguracoes(
+            "Informe um percentual válido.",
+            "erro"
+        );
+
+        input.focus();
+
+        return;
+
+    }
+
+
+    if (
+        percentual < 0
+    ) {
+
+        mostrarMensagemConfiguracoes(
+            "A percentagem não pode ser negativa.",
+            "erro"
+        );
+
+        return;
+
+    }
+
+
+    if (
+        percentual > 100
+    ) {
+
+        mostrarMensagemConfiguracoes(
+            "A percentagem não pode ser superior a 100%.",
+            "erro"
+        );
+
+        return;
+
+    }
+
+
+    /*
+    =========================================================
+    BLOQUEAR BOTÃO
+    =========================================================
+    */
+
+    if (botao) {
+
+        botao.disabled =
+            true;
+
+        botao.innerHTML = `
+            <i class="bi bi-hourglass-split"></i>
+            Salvando...
+        `;
+
+    }
+
+
+    try {
+
+        /*
+        =====================================================
+        PUT
+        =====================================================
+        */
+
+        const resposta =
+            await fetch(
+                API + "/configuracoes/",
+                {
+
+                    method:
+                        "PUT",
+
+                    headers: {
+
+                        "Content-Type":
+                            "application/json",
+
+                        "Accept":
+                            "application/json"
+
+                    },
+
+                    body:
+                        JSON.stringify({
+
+                            percentual_saque:
+                                percentual
+
+                        })
+
+                }
+            );
+
+
+        /*
+        =====================================================
+        JSON
+        =====================================================
+        */
+
+        const dados =
+            await resposta.json();
+
+
+        console.log(
+            "RESPOSTA DO SERVIDOR:",
+            dados
+        );
+
+
+        /*
+        =====================================================
+        VERIFICAR
+        =====================================================
+        */
+
+        if (!resposta.ok) {
+
+            throw new Error(
+                dados.detail ||
+                "Não foi possível salvar a configuração."
+            );
+
+        }
+
+
+        /*
+        =====================================================
+        PEGAR VALOR DEVOLVIDO
+        =====================================================
+        */
+
+        const novoValor =
+            Number(
+                dados.percentual_saque
+            );
+
+
+        if (
+            Number.isNaN(novoValor)
+        ) {
+
+            throw new Error(
+                "O servidor não retornou um percentual válido."
+            );
+
+        }
+
+
+        /*
+        =====================================================
+        MOSTRAR NOVO VALOR
+        =====================================================
+        */
+
+        if (valorAtual) {
+
+            valorAtual.textContent =
+                novoValor;
+
+        }
+
+
+        /*
+        =====================================================
+        LIMPAR
+        =====================================================
+        */
+
+        input.value =
+            "";
+
+
+        /*
+        =====================================================
+        SUCESSO
+        =====================================================
+        */
+
+        mostrarMensagemConfiguracoes(
+            "Configuração salva com sucesso!",
+            "sucesso"
+        );
+
+
+        /*
+        =====================================================
+        FECHAR
+        =====================================================
+        */
+
+        setTimeout(
+            function () {
+
+                fecharModalConfiguracoes();
+
+            },
+            1000
+        );
+
+    }
+
+
+    catch (erro) {
+
+        console.error(
+            "ERRO AO SALVAR:",
+            erro
+        );
+
+
+        mostrarMensagemConfiguracoes(
+            erro.message,
+            "erro"
+        );
+
+    }
+
+
+    finally {
+
+        if (botao) {
+
+            botao.disabled =
+                false;
+
+            botao.innerHTML = `
+                <i class="bi bi-check-lg"></i>
+                Salvar
+            `;
+
+        }
+
+    }
+
+}
+
+
+
+/* =========================================================
+   MENSAGEM
+========================================================= */
+
+function mostrarMensagemConfiguracoes(
+    texto,
+    tipo
+) {
+
+    const modal =
+        document.getElementById(
+            "modal-configuracoes"
+        );
+
+
+    if (!modal) {
+
+        return;
+
+    }
+
+
+    const mensagem =
+        modal.querySelector(
+            "#configuracoes-mensagem"
+        );
+
+
+    if (!mensagem) {
+
+        return;
+
+    }
+
+
+    mensagem.textContent =
+        texto;
+
+
+    mensagem.className =
+        "configuracoes-mensagem " +
+        tipo;
+
+
+    mensagem.style.display =
+        "block";
+
+}
+
+
+
+/* =========================================================
+   FECHAR MODAL
+========================================================= */
+
+function fecharModalConfiguracoes() {
+
+    const modal =
+        document.getElementById(
+            "modal-configuracoes"
+        );
+
+
+    if (modal) {
+
+        modal.style.display =
+            "none";
+
+    }
+
+}
+
+
+
+/* =========================================================
+   CLICAR FORA
+========================================================= */
+
+document.addEventListener(
+    "click",
+    function(event) {
+
+        const modal =
+            document.getElementById(
+                "modal-configuracoes"
+            );
+
+
+        if (
+            modal &&
+            event.target === modal
+        ) {
+
+            fecharModalConfiguracoes();
+
+        }
+
+    }
+);
+
+
+
+/* =========================================================
+   ESC
+========================================================= */
+
+document.addEventListener(
+    "keydown",
+    function(event) {
+
+        if (
+            event.key !== "Escape"
+        ) {
+
+            return;
+
+        }
+
+
+        const modal =
+            document.getElementById(
+                "modal-configuracoes"
+            );
+
+
+        if (
+            modal &&
+            modal.style.display === "flex"
+        ) {
+
+            fecharModalConfiguracoes();
+
+        }
+
+    }
+);
+
+</script>

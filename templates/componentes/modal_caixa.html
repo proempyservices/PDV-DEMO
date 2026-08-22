@@ -1,0 +1,503 @@
+<!-- =====================================
+     MODAL PRINCIPAL CAIXA
+====================================== -->
+
+<div id="caixa-panel"
+     class="caixa-overlay"
+     style="display:none;">
+
+    <div class="dashboard-card usuarios-box caixa-modal">
+
+        <!-- CABEÇALHO -->
+
+        <div class="card-header d-flex justify-content-between align-items-center">
+
+            <h4>
+                <i class="bi bi-cash-stack"></i>
+                Movimentações da Caixa
+            </h4>
+
+            <button
+                class="btn btn-danger"
+                onclick="fecharCaixa()">
+
+                <i class="bi bi-x-lg"></i>
+
+            </button>
+
+        </div>
+
+
+        <!-- =====================================
+             RESUMO DAS CAIXAS
+        ====================================== -->
+
+        <div class="p-3">
+
+            <h5>
+                <i class="bi bi-wallet2"></i>
+                Resumo das caixas
+            </h5>
+
+            <hr>
+
+            <div id="lista-caixas">
+            </div>
+
+        </div>
+
+
+        <!-- =====================================
+             HISTÓRICO
+        ====================================== -->
+
+        <div class="p-3">
+
+            <hr>
+
+            <h5>
+                <i class="bi bi-clock-history"></i>
+                Histórico de movimentos
+            </h5>
+
+
+            <!-- CAMPO DE PESQUISA -->
+
+            <input
+                type="text"
+                id="filtro-historico"
+                class="form-control mb-3"
+                placeholder="Pesquisar por data, hora, nome, tipo, valor ou observação..."
+                oninput="filtrarHistorico()">
+
+
+            <div class="table-responsive">
+
+                <table class="table table-hover">
+
+                    <thead>
+
+                        <tr>
+
+                            <th>
+                                Nome
+                            </th>
+
+                            <th>
+                                Tipo
+                            </th>
+
+                            <th>
+                                Valor
+                            </th>
+
+                            <th>
+                                Data
+                            </th>
+
+                            <th>
+                                Observação
+                            </th>
+
+                        </tr>
+
+                    </thead>
+
+
+                    <tbody id="lista-movimentos-caixa">
+
+                    </tbody>
+
+                </table>
+
+            </div>
+
+        </div>
+
+    </div>
+
+
+    <!-- =====================================
+         POPUP RECOLHER
+    ====================================== -->
+
+    <div id="area-recolha-caixa"
+         style="display:none;">
+
+        <div class="card p-3 operacao-caixa">
+
+            <div class="d-flex justify-content-between">
+
+                <h5>
+
+                    <i class="bi bi-arrow-down-circle"></i>
+
+                    Recolher dinheiro
+
+                </h5>
+
+
+                <button
+                    class="btn btn-sm btn-danger"
+                    onclick="fecharOperacaoCaixa()">
+
+                    X
+
+                </button>
+
+            </div>
+
+
+            <hr>
+
+
+            <input
+                type="hidden"
+                id="vendedor-recolha-id">
+
+
+            <p>
+
+                Usuário:
+
+                <strong id="nome-vendedor-recolha">
+                </strong>
+
+            </p>
+
+
+            <!-- VALOR DA RECOLHA -->
+
+            <label>
+                Valor
+            </label>
+
+
+            <input
+                id="caixa-valor-recolha"
+                type="number"
+                min="0"
+                step="0.01"
+                class="form-control mb-3"
+                placeholder="Valor a recolher"
+                onkeydown="return event.key !== '-' && event.key !== 'e'">
+
+
+            <!-- OBSERVAÇÃO -->
+
+            <label>
+                Observação
+            </label>
+
+
+            <textarea
+                id="caixa-observacao"
+                class="form-control mb-3"
+                placeholder="Motivo da recolha"></textarea>
+
+
+            <!-- BOTÃO -->
+
+            <button
+                class="btn btn-danger w-100"
+                onclick="recolherDinheiro()">
+
+                Confirmar recolha
+
+            </button>
+
+        </div>
+
+    </div>
+
+
+    <!-- =====================================
+         POPUP RETIRAR
+    ====================================== -->
+
+    <div id="area-retirada-caixa"
+         style="display:none;">
+
+        <div class="card p-3 operacao-caixa">
+
+            <div class="d-flex justify-content-between">
+
+                <h5>
+
+                    <i class="bi bi-cash-coin"></i>
+
+                    Retirar da minha caixa
+
+                </h5>
+
+
+                <button
+                    class="btn btn-sm btn-danger"
+                    onclick="fecharOperacaoCaixa()">
+
+                    X
+
+                </button>
+
+            </div>
+
+
+            <hr>
+
+
+            <!-- VALOR DA RETIRADA -->
+
+            <label>
+                Valor
+            </label>
+
+
+            <input
+                id="caixa-valor-retirada"
+                type="number"
+                min="0"
+                step="0.01"
+                class="form-control mb-3"
+                placeholder="Valor a retirar"
+                onkeydown="return event.key !== '-' && event.key !== 'e'">
+
+
+            <!-- OBSERVAÇÃO -->
+
+            <label>
+                Observação
+            </label>
+
+
+            <textarea
+                id="caixa-observacao-retirada"
+                class="form-control mb-3"
+                placeholder="Motivo da retirada"></textarea>
+
+
+            <!-- BOTÃO -->
+
+            <button
+                class="btn btn-warning w-100"
+                onclick="retirarCaixa()">
+
+                Confirmar retirada
+
+            </button>
+
+        </div>
+
+    </div>
+
+</div>
+
+
+<!-- =====================================
+     CSS
+====================================== -->
+
+<style>
+
+/* =====================================
+   FUNDO DO MODAL PRINCIPAL
+====================================== */
+
+.caixa-overlay{
+
+    position:fixed;
+
+    top:0;
+
+    left:0;
+
+    width:100%;
+
+    height:100%;
+
+    background:rgba(0,0,0,.55);
+
+    display:flex;
+
+    justify-content:center;
+
+    align-items:center;
+
+    z-index:9999;
+
+}
+
+
+/* =====================================
+   POPUP PRINCIPAL DA CAIXA
+====================================== */
+
+.caixa-modal{
+
+    width:1000px;
+
+    max-width:95vw;
+
+    height:90vh;
+
+    max-height:90vh;
+
+    background:white;
+
+    border-radius:15px;
+
+    box-shadow:
+    0 15px 50px rgba(0,0,0,.4);
+
+    overflow:auto;
+
+}
+
+
+/* =====================================
+   TABELA GRANDE NO CELULAR
+====================================== */
+
+.caixa-modal table{
+
+    min-width:700px;
+
+}
+
+
+/* =====================================
+   CABEÇALHO
+====================================== */
+
+.caixa-modal .card-header{
+
+    padding:15px 20px;
+
+    background:#f8f9fa;
+
+    border-radius:15px 15px 0 0;
+
+}
+
+
+/* =====================================
+   LISTA DAS CAIXAS
+====================================== */
+
+#lista-caixas{
+
+    display:grid;
+
+    grid-template-columns:
+    repeat(auto-fit,minmax(280px,1fr));
+
+    gap:15px;
+
+}
+
+
+#lista-caixas .card{
+
+    border-radius:12px;
+
+    padding:15px;
+
+}
+
+
+/* =====================================
+   POPUPS INTERNOS
+====================================== */
+
+#area-recolha-caixa,
+#area-retirada-caixa{
+
+    position:fixed;
+
+    top:0;
+
+    left:0;
+
+    width:100%;
+
+    height:100%;
+
+    background:rgba(0,0,0,.45);
+
+    display:flex;
+
+    align-items:center;
+
+    justify-content:center;
+
+    z-index:20000;
+
+}
+
+
+/* =====================================
+   FORMULÁRIO DE OPERAÇÃO
+====================================== */
+
+.operacao-caixa{
+
+    width:420px;
+
+    max-width:90%;
+
+    background:white;
+
+    border-radius:15px;
+
+    box-shadow:
+    0 10px 40px rgba(0,0,0,.5);
+
+    padding:20px;
+
+}
+
+
+.operacao-caixa input,
+.operacao-caixa textarea{
+
+    border-radius:8px;
+
+}
+
+
+.operacao-caixa textarea{
+
+    height:90px;
+
+    resize:none;
+
+}
+
+
+/* =====================================
+   MOBILE
+====================================== */
+
+@media(max-width:768px){
+
+    .caixa-modal{
+
+        width:95%;
+
+        height:90vh;
+
+        max-height:90vh;
+
+        overflow:auto;
+
+    }
+
+
+    .operacao-caixa{
+
+        width:95%;
+
+    }
+
+}
+
+</style>

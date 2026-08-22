@@ -1,0 +1,2500 @@
+<!-- =====================================================
+     MODAL NOVA VENDA
+===================================================== -->
+
+<div
+    id="venda-panel"
+    class="usuarios-modal"
+    style="display:none;"
+>
+
+    <div class="dashboard-card usuarios-box">
+
+
+        <!-- =================================================
+             CABEÇALHO
+        ================================================== -->
+
+        <div class="card-header">
+
+            <h4>
+                Nova Venda
+            </h4>
+
+
+            <button
+                type="button"
+                class="btn btn-danger"
+                onclick="fecharVenda()"
+            >
+
+                <i class="bi bi-x-lg"></i>
+
+            </button>
+
+        </div>
+
+
+
+        <!-- =================================================
+             CONTEÚDO PRINCIPAL
+        ================================================== -->
+
+        <div class="row venda-conteudo">
+
+
+            <!-- =================================================
+                 PRODUTOS
+            ================================================== -->
+
+            <div class="col-md-7 produtos-area">
+
+
+                <!-- =================================================
+                     PESQUISA
+                ================================================== -->
+
+                <input
+                    id="pesquisa-produto"
+                    type="text"
+                    class="form-control"
+                    placeholder="Pesquisar produto..."
+                    autocomplete="off"
+                    oninput="filtrarProdutos()"
+                >
+
+
+
+                <!-- =================================================
+                     LISTA DE PRODUTOS
+                ================================================== -->
+
+                <div class="produtos-tabela-container">
+
+                    <table class="table table-hover">
+
+                        <thead>
+
+                            <tr>
+
+                                <th>
+                                    Produto
+                                </th>
+
+                                <th>
+                                    Preço
+                                </th>
+
+                                <th>
+                                    Stock
+                                </th>
+
+                                <th>
+                                </th>
+
+                            </tr>
+
+                        </thead>
+
+
+                        <tbody id="lista-produtos-venda">
+
+                            <!--
+                                Produtos inseridos pelo JavaScript
+                            -->
+
+                        </tbody>
+
+                    </table>
+
+                </div>
+
+            </div>
+
+
+
+            <!-- =================================================
+                 CARRINHO / PAGAMENTO
+            ================================================== -->
+
+            <div class="col-md-5 carrinho-area">
+
+
+                <!-- =================================================
+                     TÍTULO DESKTOP
+                ================================================== -->
+
+                <div class="titulo-carrinho">
+
+                    <i class="bi bi-cart3"></i>
+
+                    <span>
+                        Carrinho
+                    </span>
+
+                </div>
+
+
+
+                <!-- =================================================
+                     BOTÃO MOBILE
+
+                     Aparece somente em telefones pequenos.
+                ================================================== -->
+
+                <button
+                    type="button"
+                    id="btn-abrir-carrinho"
+                    class="btn btn-primary btn-ver-carrinho"
+                    onclick="abrirCarrinhoMobile()"
+                >
+
+                    <i class="bi bi-cart3"></i>
+
+                    <span>
+                        Ver carrinho
+                    </span>
+
+                    <span
+                        id="contador-carrinho"
+                        class="contador-carrinho"
+                    >
+                        0
+                    </span>
+
+                </button>
+
+
+
+                <!-- =================================================
+                     ÁREA DOS ITENS DO CARRINHO
+
+                     NO DESKTOP:
+                     FICA NORMALMENTE AQUI.
+
+                     NO TELEFONE:
+                     É MOVIDA TEMPORARIAMENTE PARA O POPUP.
+                ================================================== -->
+
+                <div
+                    id="carrinho-scroll"
+                    class="carrinho-scroll"
+                >
+
+                    <table class="table">
+
+                        <thead>
+
+                            <tr>
+
+                                <th>
+                                    Produto
+                                </th>
+
+                                <th>
+                                    Qtd
+                                </th>
+
+                                <th>
+                                    Total
+                                </th>
+
+                                <th>
+                                </th>
+
+                            </tr>
+
+                        </thead>
+
+
+                        <tbody id="lista-carrinho">
+
+                            <!--
+                                Itens adicionados pelo JavaScript.
+                            -->
+
+                        </tbody>
+
+                    </table>
+
+                </div>
+
+
+
+                <!-- =================================================
+                     PARTE DE PAGAMENTO
+                ================================================== -->
+
+                <div class="carrinho-fixo">
+
+
+                    <hr>
+
+
+
+                    <!-- =================================================
+                         TOTAL
+                    ================================================== -->
+
+                    <div class="total-container">
+
+                        <span class="total-label">
+                            Total:
+                        </span>
+
+
+                        <span
+                            id="total-venda"
+                            class="total-valor"
+                        >
+                            0 MT
+                        </span>
+
+                    </div>
+
+
+
+                    <!-- =================================================
+                         VALOR ENTREGUE
+                    ================================================== -->
+
+                    <input
+                        id="valor-entregue"
+                        type="number"
+                        class="form-control"
+                        min="0"
+                        step="0.01"
+                        placeholder="Valor entregue"
+                        oninput="calcularTroco()"
+                    >
+
+
+
+                    <!-- =================================================
+                         TROCO
+                    ================================================== -->
+
+                    <div class="troco-container">
+
+                        <span>
+                            Troco:
+                        </span>
+
+
+                        <span id="troco">
+                            0 MT
+                        </span>
+
+                    </div>
+
+
+
+                    <!-- =================================================
+                         FINALIZAR
+                    ================================================== -->
+
+                    <button
+                        type="button"
+                        id="btn-finalizar-venda"
+                        class="btn btn-success"
+                        onclick="finalizarVenda()"
+                    >
+                        <i class="bi bi-check-circle"></i>
+                        <span>Finalizar Venda</span>
+                    </button>
+
+                </div>
+
+            </div>
+
+        </div>
+
+    </div>
+
+</div>
+
+
+
+<!-- =====================================================
+     POPUP MOBILE DO CARRINHO
+===================================================== -->
+
+<div
+    id="carrinho-mobile-modal"
+    class="carrinho-mobile-modal"
+    style="display:none;"
+>
+
+
+    <!-- =================================================
+         CAIXA DO POPUP
+    ================================================== -->
+
+    <div class="carrinho-mobile-box">
+
+
+        <!-- =================================================
+             CABEÇALHO POPUP
+        ================================================== -->
+
+        <div class="carrinho-mobile-header">
+
+            <div class="carrinho-mobile-titulo">
+
+                <i class="bi bi-cart3"></i>
+
+                <span>
+                    Itens do carrinho
+                </span>
+
+            </div>
+
+
+            <button
+                type="button"
+                class="btn btn-danger btn-fechar-carrinho-mobile"
+                onclick="fecharCarrinhoMobile()"
+            >
+
+                <i class="bi bi-x-lg"></i>
+
+            </button>
+
+        </div>
+
+
+
+        <!-- =================================================
+             ÁREA DO CARRINHO
+
+             O #carrinho-scroll É MOVIDO PARA AQUI
+             PELO JAVASCRIPT.
+        ================================================== -->
+
+        <div
+            id="carrinho-mobile-conteudo"
+            class="carrinho-mobile-conteudo"
+        >
+
+        </div>
+
+
+
+        <!-- =================================================
+             RODAPÉ
+        ================================================== -->
+
+        <div class="carrinho-mobile-footer">
+
+            <button
+                type="button"
+                class="btn btn-secondary btn-fechar-carrinho"
+                onclick="fecharCarrinhoMobile()"
+            >
+
+                <i class="bi bi-arrow-left"></i>
+
+                Fechar carrinho
+
+            </button>
+
+        </div>
+
+    </div>
+
+</div>
+
+
+
+<!-- =====================================================
+     CSS
+===================================================== -->
+
+<style>
+
+
+/* =====================================================
+   MODAL PRINCIPAL
+===================================================== */
+
+#venda-panel {
+
+    align-items: center;
+
+    justify-content: center;
+
+    padding: 10px;
+}
+
+
+
+/* =====================================================
+   CAIXA PRINCIPAL
+===================================================== */
+
+#venda-panel .usuarios-box {
+
+    width: 1000px;
+
+    max-width: 95vw;
+
+    height: 90vh;
+
+    max-height: 90vh;
+
+    padding: 0;
+
+    display: flex;
+
+    flex-direction: column;
+
+    overflow: hidden;
+}
+
+
+
+/* =====================================================
+   CABEÇALHO
+===================================================== */
+
+#venda-panel .card-header {
+
+    flex-shrink: 0;
+
+    height: 60px;
+
+    min-height: 60px;
+
+    padding: 10px 20px;
+
+    display: flex;
+
+    align-items: center;
+
+    justify-content: space-between;
+
+    background: #ffffff;
+
+    border-bottom: 1px solid #dddddd;
+
+    z-index: 100;
+}
+
+
+#venda-panel .card-header h4 {
+
+    margin: 0;
+
+    font-size: 20px;
+
+    font-weight: 600;
+}
+
+
+#venda-panel .card-header button {
+
+    width: 38px;
+
+    height: 38px;
+
+    display: flex;
+
+    align-items: center;
+
+    justify-content: center;
+}
+
+
+
+/* =====================================================
+   CONTEÚDO
+===================================================== */
+
+#venda-panel .venda-conteudo {
+
+    display: flex;
+
+    flex: 1;
+
+    min-height: 0;
+
+    margin: 0;
+
+    overflow: hidden;
+}
+
+
+
+/* =====================================================
+   PRODUTOS
+===================================================== */
+
+#venda-panel .produtos-area {
+
+    width: 58.333333%;
+
+    height: 100%;
+
+    min-height: 0;
+
+    padding: 20px;
+
+    overflow-y: auto;
+
+    overflow-x: hidden;
+
+    background: #f8f9fa;
+}
+
+
+
+/* =====================================================
+   PESQUISA
+===================================================== */
+
+#venda-panel #pesquisa-produto {
+
+    width: 100%;
+
+    height: 44px;
+
+    margin-bottom: 12px;
+
+    background: #ffffff;
+}
+
+
+
+/* =====================================================
+   TABELA PRODUTOS
+===================================================== */
+
+#venda-panel .produtos-tabela-container {
+
+    width: 100%;
+}
+
+
+#venda-panel .produtos-tabela-container table {
+
+    width: 100%;
+
+    margin: 0;
+
+    background: #ffffff;
+}
+
+
+#venda-panel .produtos-tabela-container thead {
+
+    position: sticky;
+
+    top: 0;
+
+    z-index: 10;
+}
+
+
+#venda-panel .produtos-tabela-container thead th {
+
+    background: #ffffff;
+}
+
+
+#venda-panel .produtos-tabela-container th,
+#venda-panel .produtos-tabela-container td {
+
+    vertical-align: middle;
+}
+
+
+
+/* =====================================================
+   CARRINHO
+===================================================== */
+
+#venda-panel .carrinho-area {
+
+    width: 41.666667%;
+
+    height: 100%;
+
+    min-height: 0;
+
+    padding: 15px;
+
+    display: flex;
+
+    flex-direction: column;
+
+    overflow: hidden;
+
+    background: #ffffff;
+
+    border-left: 1px solid #dddddd;
+
+    box-shadow:
+        -3px 0 10px
+        rgba(0, 0, 0, 0.06);
+}
+
+
+
+/* =====================================================
+   TÍTULO
+===================================================== */
+
+#venda-panel .titulo-carrinho {
+
+    flex-shrink: 0;
+
+    height: 32px;
+
+    min-height: 32px;
+
+    display: flex;
+
+    align-items: center;
+
+    gap: 7px;
+
+    margin-bottom: 8px;
+
+    font-size: 17px;
+
+    font-weight: 600;
+}
+
+
+
+/* =====================================================
+   BOTÃO VER CARRINHO
+===================================================== */
+
+#venda-panel .btn-ver-carrinho {
+
+    display: none;
+
+    width: 100%;
+
+    height: 40px;
+
+    align-items: center;
+
+    justify-content: center;
+
+    gap: 7px;
+
+    margin-bottom: 8px;
+
+    font-size: 14px;
+
+    font-weight: 600;
+}
+
+
+#venda-panel .contador-carrinho {
+
+    min-width: 23px;
+
+    height: 23px;
+
+    padding: 2px 6px;
+
+    display: inline-flex;
+
+    align-items: center;
+
+    justify-content: center;
+
+    background: #ffffff;
+
+    color: #0d6efd;
+
+    border-radius: 20px;
+
+    font-size: 11px;
+
+    font-weight: 700;
+}
+
+
+
+/* =====================================================
+   SCROLL CARRINHO
+===================================================== */
+
+#venda-panel #carrinho-scroll {
+
+    flex: 1 1 auto;
+
+    width: 100%;
+
+    min-height: 0;
+
+    overflow-y: auto;
+
+    overflow-x: auto;
+
+    scroll-behavior: smooth;
+
+    overscroll-behavior: contain;
+}
+
+
+
+/* =====================================================
+   TABELA CARRINHO
+===================================================== */
+
+#venda-panel #carrinho-scroll table {
+
+    width: 100%;
+
+    margin: 0;
+}
+
+
+#venda-panel #carrinho-scroll thead {
+
+    position: sticky;
+
+    top: 0;
+
+    z-index: 20;
+}
+
+
+#venda-panel #carrinho-scroll thead th {
+
+    background: #ffffff;
+}
+
+
+#venda-panel #carrinho-scroll th,
+#venda-panel #carrinho-scroll td {
+
+    padding: 7px 5px;
+
+    vertical-align: middle;
+}
+
+
+
+/* =====================================================
+   ITEM CARRINHO
+===================================================== */
+
+#venda-panel .item-carrinho {
+
+    transition:
+        background-color 0.3s ease;
+}
+
+
+#venda-panel .item-adicionado-destaque {
+
+    background-color: #d1e7dd !important;
+}
+
+
+
+/* =====================================================
+   PARTE PAGAMENTO
+===================================================== */
+
+#venda-panel .carrinho-fixo {
+
+    flex-shrink: 0;
+
+    width: 100%;
+
+    background: #ffffff;
+
+    position: relative;
+
+    z-index: 50;
+}
+
+
+
+/* =====================================================
+   HR
+===================================================== */
+
+#venda-panel .carrinho-fixo hr {
+
+    margin: 8px 0;
+}
+
+
+
+/* =====================================================
+   TOTAL
+===================================================== */
+
+#venda-panel .total-container {
+
+    width: 100%;
+
+    display: flex;
+
+    align-items: center;
+
+    justify-content: space-between;
+
+    margin-bottom: 8px;
+}
+
+
+#venda-panel .total-label {
+
+    font-size: 18px;
+
+    font-weight: 600;
+}
+
+
+#venda-panel .total-valor {
+
+    font-size: 18px;
+
+    font-weight: 700;
+
+    color: #198754;
+}
+
+
+
+/* =====================================================
+   VALOR ENTREGUE
+===================================================== */
+
+#venda-panel #valor-entregue {
+
+    width: 100%;
+
+    height: 42px;
+
+    margin-bottom: 8px;
+}
+
+
+
+/* =====================================================
+   TROCO
+===================================================== */
+
+#venda-panel .troco-container {
+
+    display: flex;
+
+    justify-content: space-between;
+
+    align-items: center;
+
+    margin-bottom: 8px;
+
+    font-size: 16px;
+
+    font-weight: 600;
+}
+
+
+#venda-panel #troco {
+
+    color: #0d6efd;
+}
+
+
+
+/* =====================================================
+   FINALIZAR
+===================================================== */
+
+#venda-panel .btn-finalizar-venda {
+
+    width: 100%;
+
+    height: 48px;
+
+    min-height: 48px;
+
+    margin: 0;
+
+    display: flex;
+
+    align-items: center;
+
+    justify-content: center;
+
+    gap: 7px;
+
+    font-size: 16px;
+
+    font-weight: 600;
+}
+
+
+
+/* =====================================================
+   POPUP MOBILE
+===================================================== */
+
+#carrinho-mobile-modal {
+
+    position: fixed;
+
+    inset: 0;
+
+    width: 100vw;
+
+    height: 100vh;
+
+    background:
+        rgba(0, 0, 0, 0.55);
+
+    z-index: 99999;
+
+    align-items: center;
+
+    justify-content: center;
+
+    padding: 10px;
+}
+
+
+
+/* =====================================================
+   CAIXA POPUP
+===================================================== */
+
+#carrinho-mobile-modal .carrinho-mobile-box {
+
+    width: 100%;
+
+    max-width: 500px;
+
+    height: 90vh;
+
+    max-height: 90vh;
+
+    background: #ffffff;
+
+    border-radius: 12px;
+
+    display: flex;
+
+    flex-direction: column;
+
+    overflow: hidden;
+
+    box-shadow:
+        0 10px 40px
+        rgba(0, 0, 0, 0.30);
+}
+
+
+
+/* =====================================================
+   CABEÇALHO POPUP
+===================================================== */
+
+#carrinho-mobile-modal .carrinho-mobile-header {
+
+    flex-shrink: 0;
+
+    height: 55px;
+
+    min-height: 55px;
+
+    padding: 8px 12px;
+
+    display: flex;
+
+    align-items: center;
+
+    justify-content: space-between;
+
+    border-bottom: 1px solid #dddddd;
+
+    background: #ffffff;
+}
+
+
+#carrinho-mobile-modal .carrinho-mobile-titulo {
+
+    display: flex;
+
+    align-items: center;
+
+    gap: 7px;
+
+    font-size: 17px;
+
+    font-weight: 600;
+}
+
+
+#carrinho-mobile-modal .btn-fechar-carrinho-mobile {
+
+    width: 36px;
+
+    height: 36px;
+
+    padding: 0;
+
+    display: flex;
+
+    align-items: center;
+
+    justify-content: center;
+}
+
+
+
+/* =====================================================
+   CONTEÚDO POPUP
+===================================================== */
+
+#carrinho-mobile-modal .carrinho-mobile-conteudo {
+
+    flex: 1 1 auto;
+
+    min-height: 0;
+
+    overflow: hidden;
+
+    display: flex;
+
+    flex-direction: column;
+
+    padding: 0;
+}
+
+
+
+/* =====================================================
+   QUANDO O CARRINHO ESTÁ DENTRO DO POPUP
+===================================================== */
+
+#carrinho-mobile-modal #carrinho-scroll {
+
+    display: block;
+
+    width: 100%;
+
+    height: 100%;
+
+    min-height: 0;
+
+    flex: 1 1 auto;
+
+    overflow-y: auto;
+
+    overflow-x: auto;
+
+    -webkit-overflow-scrolling: touch;
+}
+
+
+#carrinho-mobile-modal #carrinho-scroll table {
+
+    width: 100%;
+
+    min-width: 100%;
+
+    margin: 0;
+}
+
+
+#carrinho-mobile-modal #carrinho-scroll thead {
+
+    position: sticky;
+
+    top: 0;
+
+    z-index: 20;
+}
+
+
+#carrinho-mobile-modal #carrinho-scroll thead th {
+
+    background: #ffffff;
+
+    box-shadow:
+        0 1px 3px
+        rgba(0, 0, 0, 0.08);
+}
+
+
+#carrinho-mobile-modal #carrinho-scroll th,
+#carrinho-mobile-modal #carrinho-scroll td {
+
+    padding: 7px 5px;
+
+    vertical-align: middle;
+}
+
+
+
+/* =====================================================
+   RODAPÉ POPUP
+===================================================== */
+
+#carrinho-mobile-modal .carrinho-mobile-footer {
+
+    flex-shrink: 0;
+
+    padding: 8px;
+
+    border-top: 1px solid #dddddd;
+
+    background: #ffffff;
+}
+
+
+#carrinho-mobile-modal .btn-fechar-carrinho {
+
+    width: 100%;
+
+    height: 42px;
+
+    font-size: 14px;
+
+    font-weight: 600;
+}
+
+
+
+/* =====================================================
+   SCROLLBARS
+===================================================== */
+
+#venda-panel .produtos-area::-webkit-scrollbar,
+#venda-panel #carrinho-scroll::-webkit-scrollbar {
+
+    width: 7px;
+
+    height: 7px;
+}
+
+
+#venda-panel .produtos-area::-webkit-scrollbar-thumb,
+#venda-panel #carrinho-scroll::-webkit-scrollbar-thumb {
+
+    background: #aaaaaa;
+
+    border-radius: 10px;
+}
+
+
+#venda-panel .produtos-area::-webkit-scrollbar-track,
+#venda-panel #carrinho-scroll::-webkit-scrollbar-track {
+
+    background: #eeeeee;
+}
+
+
+
+/* =====================================================
+   =====================================================
+   TELEFONE
+   =====================================================
+===================================================== */
+
+@media (max-width: 767px) {
+
+
+    /* =================================================
+       MODAL PRINCIPAL
+    ================================================= */
+
+    #venda-panel {
+
+        align-items: flex-start;
+
+        justify-content: center;
+
+        padding: 0;
+    }
+
+
+
+    /* =================================================
+       CAIXA
+    ================================================= */
+
+    #venda-panel .usuarios-box {
+
+        width: 100% !important;
+
+        max-width: 100%;
+
+        height: 100vh;
+
+        max-height: 100vh;
+
+        border-radius: 0;
+    }
+
+
+
+    /* =================================================
+       CABEÇALHO
+    ================================================= */
+
+    #venda-panel .card-header {
+
+        height: 55px;
+
+        min-height: 55px;
+
+        padding: 8px 12px;
+    }
+
+
+    #venda-panel .card-header h4 {
+
+        font-size: 18px;
+    }
+
+
+    #venda-panel .card-header button {
+
+        width: 36px;
+
+        height: 36px;
+    }
+
+
+
+    /* =================================================
+       CONTEÚDO
+    ================================================= */
+
+    #venda-panel .venda-conteudo {
+
+        height: calc(100vh - 55px);
+
+        display: flex;
+
+        flex-direction: column;
+
+        min-height: 0;
+
+        overflow: hidden;
+    }
+
+
+
+    /* =================================================
+       PRODUTOS PRIMEIRO
+    ================================================= */
+
+    #venda-panel .produtos-area {
+
+        order: 1;
+
+        width: 100%;
+
+        height: 100% !important;
+
+        max-height: 100% !important;
+
+        min-height: 0 !important;
+
+        flex: 1 1 auto;
+
+        padding: 10px;
+
+        overflow-y: auto;
+
+        overflow-x: hidden;
+
+        background: #f8f9fa;
+    }
+
+
+
+    /* =================================================
+       CARRINHO / PAGAMENTO
+
+       AGORA NÃO TOMA ESPAÇO DA LISTA DE PRODUTOS.
+
+       FICA COMO BARRA FIXA NO FINAL DA TELA.
+    ================================================= */
+
+    #venda-panel .carrinho-area {
+
+        order: 2;
+
+        position: fixed;
+
+        left: 0;
+
+        right: 0;
+
+        bottom: 0;
+
+        width: 100%;
+
+        height: auto !important;
+
+        max-height: none !important;
+
+        min-height: 0 !important;
+
+        flex: none;
+
+        padding: 7px 10px;
+
+        display: flex;
+
+        flex-direction: column;
+
+        overflow: visible !important;
+
+        background: #ffffff;
+
+        border-left: none;
+
+        border-top: 1px solid #dddddd;
+
+        box-shadow:
+            0 -4px 15px
+            rgba(0, 0, 0, 0.12);
+
+        z-index: 500;
+    }
+
+
+
+    /* =================================================
+       ESCONDE TÍTULO DESKTOP
+    ================================================= */
+
+    #venda-panel .titulo-carrinho {
+
+        display: none;
+    }
+
+
+
+    /* =================================================
+       MOSTRA BOTÃO VER CARRINHO
+    ================================================= */
+
+    #venda-panel .btn-ver-carrinho {
+
+        display: flex;
+
+        flex-shrink: 0;
+
+        height: 36px;
+
+        margin-bottom: 6px;
+
+        font-size: 12px;
+    }
+
+
+
+    /* =================================================
+       ESCONDE LISTA DO CARRINHO NA TELA PRINCIPAL
+
+       ELA SERÁ MOSTRADA NO POPUP.
+    ================================================= */
+
+    #venda-panel #carrinho-scroll {
+
+        display: none !important;
+
+        position: static;
+
+        width: 100%;
+
+        height: 0;
+
+        max-height: 0;
+
+        min-height: 0;
+
+        overflow: hidden;
+    }
+
+
+
+    /* =================================================
+       PAGAMENTO
+    ================================================= */
+
+    #venda-panel .carrinho-fixo {
+
+        order: 2;
+
+        width: 100%;
+
+        flex-shrink: 0;
+
+        padding: 0;
+
+        margin: 0;
+
+        background: #ffffff;
+    }
+
+
+
+    /* =================================================
+       HR
+    ================================================= */
+
+    #venda-panel .carrinho-fixo hr {
+
+        margin: 2px 0 4px 0;
+    }
+
+
+
+    /* =================================================
+       TOTAL
+    ================================================= */
+
+    #venda-panel .total-container {
+
+        height: 20px;
+
+        margin-bottom: 3px;
+    }
+
+
+    #venda-panel .total-label,
+    #venda-panel .total-valor {
+
+        font-size: 14px;
+    }
+
+
+
+    /* =================================================
+       VALOR ENTREGUE
+    ================================================= */
+
+    #venda-panel #valor-entregue {
+
+        height: 32px;
+
+        margin-bottom: 3px;
+
+        font-size: 12px;
+    }
+
+
+
+    /* =================================================
+       TROCO
+    ================================================= */
+
+    #venda-panel .troco-container {
+
+        height: 18px;
+
+        min-height: 18px;
+
+        margin-bottom: 3px;
+
+        font-size: 13px;
+    }
+
+
+
+    /* =================================================
+       FINALIZAR
+    ================================================= */
+
+    #venda-panel .btn-finalizar-venda {
+
+        width: 100%;
+
+        height: 36px;
+
+        min-height: 36px;
+
+        font-size: 12px;
+    }
+
+
+
+    /* =================================================
+       PESQUISA
+    ================================================= */
+
+    #venda-panel #pesquisa-produto {
+
+        position: sticky;
+
+        top: 0;
+
+        z-index: 30;
+
+        width: 100%;
+
+        height: 38px;
+
+        margin-bottom: 8px;
+
+        font-size: 13px;
+
+        background: #ffffff;
+    }
+
+
+
+    /* =================================================
+       TABELA PRODUTOS
+    ================================================= */
+
+    #venda-panel .produtos-tabela-container {
+
+        width: 100%;
+    }
+
+
+    #venda-panel .produtos-tabela-container table {
+
+        width: 100%;
+
+        margin: 0;
+
+        font-size: 12px;
+    }
+
+
+    #venda-panel .produtos-tabela-container th,
+    #venda-panel .produtos-tabela-container td {
+
+        padding: 6px 3px;
+
+        vertical-align: middle;
+    }
+
+
+    #venda-panel .produtos-tabela-container thead {
+
+        position: sticky;
+
+        top: 46px;
+
+        z-index: 20;
+    }
+
+
+    #venda-panel .produtos-tabela-container thead th {
+
+        background: #ffffff;
+    }
+
+
+
+    /* =================================================
+       POPUP
+    ================================================= */
+
+    #carrinho-mobile-modal {
+
+        padding: 0;
+
+        align-items: flex-end;
+
+        justify-content: center;
+    }
+
+
+
+    /* =================================================
+       CAIXA POPUP
+    ================================================= */
+
+    #carrinho-mobile-modal .carrinho-mobile-box {
+
+        width: 100%;
+
+        max-width: 100%;
+
+        height: 92vh;
+
+        max-height: 92vh;
+
+        border-radius: 14px 14px 0 0;
+    }
+
+
+
+    /* =================================================
+       CABEÇALHO POPUP
+    ================================================= */
+
+    #carrinho-mobile-modal .carrinho-mobile-header {
+
+        height: 52px;
+
+        min-height: 52px;
+
+        padding: 7px 10px;
+    }
+
+
+    #carrinho-mobile-modal .carrinho-mobile-titulo {
+
+        font-size: 16px;
+    }
+
+
+
+    /* =================================================
+       TABELA POPUP
+    ================================================= */
+
+    #carrinho-mobile-modal #carrinho-scroll {
+
+        display: block !important;
+
+        flex: 1 1 auto;
+
+        min-height: 0;
+
+        height: auto;
+
+        max-height: none;
+
+        overflow-y: auto !important;
+
+        overflow-x: auto;
+
+        -webkit-overflow-scrolling: touch;
+    }
+
+
+    #carrinho-mobile-modal #carrinho-scroll table {
+
+        width: 100%;
+
+        min-width: 100%;
+
+        font-size: 11px;
+    }
+
+
+    #carrinho-mobile-modal #carrinho-scroll th,
+    #carrinho-mobile-modal #carrinho-scroll td {
+
+        padding: 5px 3px;
+
+        vertical-align: middle;
+    }
+
+
+
+    /* =================================================
+       INPUT QUANTIDADE POPUP
+    ================================================= */
+
+    #carrinho-mobile-modal #carrinho-scroll input[type="number"] {
+
+        width: 55px !important;
+
+        height: 30px;
+
+        padding: 2px 4px;
+
+        font-size: 12px;
+    }
+
+
+
+    /* =================================================
+       BOTÕES POPUP
+    ================================================= */
+
+    #carrinho-mobile-modal #carrinho-scroll .btn {
+
+        padding: 4px 7px;
+
+        font-size: 10px;
+    }
+
+
+
+    /* =================================================
+       RODAPÉ POPUP
+    ================================================= */
+
+    #carrinho-mobile-modal .carrinho-mobile-footer {
+
+        padding: 8px;
+    }
+
+
+    #carrinho-mobile-modal .btn-fechar-carrinho {
+
+        height: 40px;
+
+        font-size: 13px;
+    }
+
+}
+
+
+
+/* =====================================================
+   =====================================================
+   TELEFONES PEQUENOS
+   =====================================================
+===================================================== */
+
+@media (max-width: 480px) {
+
+
+    /* =================================================
+       BARRA PAGAMENTO
+    ================================================= */
+
+    #venda-panel .carrinho-area {
+
+        padding: 5px 8px;
+    }
+
+
+    #venda-panel .btn-ver-carrinho {
+
+        height: 34px;
+
+        margin-bottom: 4px;
+
+        font-size: 11px;
+    }
+
+
+    #venda-panel .carrinho-fixo hr {
+
+        margin: 1px 0 3px 0;
+    }
+
+
+    #venda-panel .total-container {
+
+        height: 18px;
+
+        margin-bottom: 2px;
+    }
+
+
+    #venda-panel .total-label,
+    #venda-panel .total-valor {
+
+        font-size: 13px;
+    }
+
+
+    #venda-panel #valor-entregue {
+
+        height: 29px;
+
+        margin-bottom: 2px;
+
+        font-size: 11px;
+    }
+
+
+    #venda-panel .troco-container {
+
+        height: 17px;
+
+        min-height: 17px;
+
+        margin-bottom: 2px;
+
+        font-size: 12px;
+    }
+
+
+    #venda-panel .btn-finalizar-venda {
+
+        height: 33px;
+
+        min-height: 33px;
+
+        font-size: 11px;
+    }
+
+
+
+    /* =================================================
+       PRODUTOS
+    ================================================= */
+
+    #venda-panel .produtos-area {
+
+        padding: 8px;
+
+        padding-bottom: 175px;
+    }
+
+
+    #venda-panel #pesquisa-produto {
+
+        height: 35px;
+
+        font-size: 12px;
+    }
+
+
+    #venda-panel .produtos-tabela-container table {
+
+        font-size: 11px;
+    }
+
+
+    #venda-panel .produtos-tabela-container th,
+    #venda-panel .produtos-tabela-container td {
+
+        padding: 5px 2px;
+    }
+
+
+
+    /* =================================================
+       POPUP
+    ================================================= */
+
+    #carrinho-mobile-modal .carrinho-mobile-box {
+
+        height: 94vh;
+
+        max-height: 94vh;
+    }
+
+
+    #carrinho-mobile-modal .carrinho-mobile-titulo {
+
+        font-size: 14px;
+    }
+
+
+    #carrinho-mobile-modal #carrinho-scroll table {
+
+        font-size: 10px;
+    }
+
+
+    #carrinho-mobile-modal #carrinho-scroll th,
+    #carrinho-mobile-modal #carrinho-scroll td {
+
+        padding: 4px 2px;
+    }
+
+
+    #carrinho-mobile-modal #carrinho-scroll input[type="number"] {
+
+        width: 50px !important;
+
+        height: 27px;
+
+        font-size: 11px;
+    }
+
+}
+
+
+
+/* =====================================================
+   =====================================================
+   TELEFONES MUITO PEQUENOS
+   =====================================================
+===================================================== */
+
+@media (max-width: 360px) {
+
+
+    #venda-panel .carrinho-area {
+
+        padding: 4px 6px;
+    }
+
+
+    #venda-panel .btn-ver-carrinho {
+
+        height: 32px;
+
+        font-size: 10px;
+
+        margin-bottom: 3px;
+    }
+
+
+    #venda-panel .total-container {
+
+        height: 17px;
+    }
+
+
+    #venda-panel .total-label,
+    #venda-panel .total-valor {
+
+        font-size: 12px;
+    }
+
+
+    #venda-panel #valor-entregue {
+
+        height: 27px;
+
+        font-size: 10px;
+    }
+
+
+    #venda-panel .troco-container {
+
+        height: 15px;
+
+        min-height: 15px;
+
+        font-size: 11px;
+    }
+
+
+    #venda-panel .btn-finalizar-venda {
+
+        height: 30px;
+
+        min-height: 30px;
+
+        font-size: 10px;
+    }
+
+
+    #venda-panel .produtos-area {
+
+        padding-bottom: 160px;
+    }
+
+
+    #carrinho-mobile-modal .carrinho-mobile-box {
+
+        height: 95vh;
+
+        max-height: 95vh;
+    }
+
+}
+
+</style>
+
+
+
+<!-- =====================================================
+     JAVASCRIPT DO POPUP DO CARRINHO
+===================================================== -->
+
+<script>
+
+
+/* =====================================================
+   REFERÊNCIAS
+===================================================== */
+
+let carrinhoOriginalContainer = null;
+
+let carrinhoOriginalParent = null;
+
+let carrinhoOriginalNextSibling = null;
+
+
+
+/* =====================================================
+   VERIFICAR SE É TELEFONE
+===================================================== */
+
+function ehTelefonePequeno() {
+
+    return window.innerWidth <= 767;
+
+}
+
+
+
+/* =====================================================
+   ABRIR CARRINHO MOBILE
+===================================================== */
+
+function abrirCarrinhoMobile() {
+
+
+    /* -----------------------------------------------
+       Só funciona no telefone
+    ------------------------------------------------ */
+
+    if (!ehTelefonePequeno()) {
+
+        return;
+
+    }
+
+
+
+    const modal = document.getElementById(
+        'carrinho-mobile-modal'
+    );
+
+
+    const conteudo = document.getElementById(
+        'carrinho-mobile-conteudo'
+    );
+
+
+    const carrinho = document.getElementById(
+        'carrinho-scroll'
+    );
+
+
+    if (!modal || !conteudo || !carrinho) {
+
+        return;
+
+    }
+
+
+
+    /* -----------------------------------------------
+       Guarda a posição original
+    ------------------------------------------------ */
+
+    if (!carrinhoOriginalParent) {
+
+        carrinhoOriginalContainer = carrinho;
+
+        carrinhoOriginalParent = carrinho.parentNode;
+
+        carrinhoOriginalNextSibling =
+            carrinho.nextSibling;
+
+    }
+
+
+
+    /* -----------------------------------------------
+       Move o carrinho para o popup
+    ------------------------------------------------ */
+
+    conteudo.appendChild(carrinho);
+
+
+
+    /* -----------------------------------------------
+       Mostra popup
+    ------------------------------------------------ */
+
+    modal.style.display = 'flex';
+
+
+
+    /* -----------------------------------------------
+       Bloqueia scroll da página
+    ------------------------------------------------ */
+
+    document.body.style.overflow = 'hidden';
+
+
+
+    /* -----------------------------------------------
+       Atualiza contador
+    ------------------------------------------------ */
+
+    atualizarContadorCarrinho();
+
+}
+
+
+
+/* =====================================================
+   FECHAR CARRINHO MOBILE
+===================================================== */
+
+function fecharCarrinhoMobile() {
+
+
+    const modal = document.getElementById(
+        'carrinho-mobile-modal'
+    );
+
+
+    const carrinho = document.getElementById(
+        'carrinho-scroll'
+    );
+
+
+    if (!modal || !carrinho) {
+
+        return;
+
+    }
+
+
+
+    /* -----------------------------------------------
+       Devolve carrinho para posição original
+    ------------------------------------------------ */
+
+    if (
+        carrinhoOriginalParent
+        &&
+        carrinhoOriginalParent.isConnected
+    ) {
+
+
+        if (
+            carrinhoOriginalNextSibling
+            &&
+            carrinhoOriginalNextSibling.parentNode
+            === carrinhoOriginalParent
+        ) {
+
+            carrinhoOriginalParent.insertBefore(
+                carrinho,
+                carrinhoOriginalNextSibling
+            );
+
+        } else {
+
+            carrinhoOriginalParent.appendChild(
+                carrinho
+            );
+
+        }
+
+    }
+
+
+
+    /* -----------------------------------------------
+       Esconde popup
+    ------------------------------------------------ */
+
+    modal.style.display = 'none';
+
+
+
+    /* -----------------------------------------------
+       Libera scroll
+    ------------------------------------------------ */
+
+    document.body.style.overflow = '';
+
+
+
+    /* -----------------------------------------------
+       Atualiza contador
+    ------------------------------------------------ */
+
+    atualizarContadorCarrinho();
+
+}
+
+
+
+/* =====================================================
+   FECHAR CLICANDO NO FUNDO
+===================================================== */
+
+document.addEventListener(
+    'click',
+    function(event) {
+
+
+        const modal =
+            document.getElementById(
+                'carrinho-mobile-modal'
+            );
+
+
+        if (!modal) {
+
+            return;
+
+        }
+
+
+        if (
+            event.target === modal
+            &&
+            ehTelefonePequeno()
+        ) {
+
+            fecharCarrinhoMobile();
+
+        }
+
+    }
+);
+
+
+
+/* =====================================================
+   ESC PARA FECHAR
+===================================================== */
+
+document.addEventListener(
+    'keydown',
+    function(event) {
+
+
+        if (event.key !== 'Escape') {
+
+            return;
+
+        }
+
+
+        const modal =
+            document.getElementById(
+                'carrinho-mobile-modal'
+            );
+
+
+        if (
+            modal
+            &&
+            modal.style.display === 'flex'
+        ) {
+
+            fecharCarrinhoMobile();
+
+        }
+
+    }
+);
+
+
+
+/* =====================================================
+   CONTADOR DO CARRINHO
+===================================================== */
+
+function atualizarContadorCarrinho() {
+
+
+    const lista =
+        document.getElementById(
+            'lista-carrinho'
+        );
+
+
+    const contador =
+        document.getElementById(
+            'contador-carrinho'
+        );
+
+
+    if (!lista || !contador) {
+
+        return;
+
+    }
+
+
+
+    const itens =
+        lista.querySelectorAll(
+            'tr.item-carrinho'
+        );
+
+
+
+    /*
+       Caso suas linhas não tenham
+       a classe item-carrinho,
+       conta todas as TR que não
+       sejam vazias.
+    */
+
+    let quantidade = itens.length;
+
+
+    if (quantidade === 0) {
+
+        quantidade =
+            lista.querySelectorAll('tr').length;
+
+    }
+
+
+
+    contador.textContent = quantidade;
+
+}
+
+
+
+/* =====================================================
+   OBSERVAR ALTERAÇÕES NO CARRINHO
+===================================================== */
+
+document.addEventListener(
+    'DOMContentLoaded',
+    function() {
+
+
+        const lista =
+            document.getElementById(
+                'lista-carrinho'
+            );
+
+
+        if (!lista) {
+
+            return;
+
+        }
+
+
+
+        const observer =
+            new MutationObserver(
+                function() {
+
+                    atualizarContadorCarrinho();
+
+                }
+            );
+
+
+        observer.observe(
+            lista,
+            {
+                childList: true,
+                subtree: true,
+                attributes: true
+            }
+        );
+
+
+
+        atualizarContadorCarrinho();
+
+    }
+);
+
+
+
+/* =====================================================
+   SE A JANELA MUDAR DE TAMANHO
+===================================================== */
+
+window.addEventListener(
+    'resize',
+    function() {
+
+
+        /*
+           Se o popup estiver aberto e o usuário
+           aumentar a tela para desktop,
+           fecha o popup e devolve o carrinho.
+        */
+
+        const modal =
+            document.getElementById(
+                'carrinho-mobile-modal'
+            );
+
+
+        if (
+            modal
+            &&
+            modal.style.display === 'flex'
+            &&
+            !ehTelefonePequeno()
+        ) {
+
+            fecharCarrinhoMobile();
+
+        }
+
+    }
+);
+
+
+
+/* =====================================================
+   QUANDO A VENDA FOR FECHADA
+===================================================== */
+
+document.addEventListener(
+    'click',
+    function(event) {
+
+
+        /*
+           Se alguma parte do seu sistema chamar
+           fecharVenda(), o carrinho precisa voltar
+           para o lugar original antes de fechar.
+        */
+
+        if (
+            event.target.closest
+            &&
+            event.target.closest(
+                '[onclick="fecharVenda()"]'
+            )
+        ) {
+
+            const modal =
+                document.getElementById(
+                    'carrinho-mobile-modal'
+                );
+
+
+            if (
+                modal
+                &&
+                modal.style.display === 'flex'
+            ) {
+
+                fecharCarrinhoMobile();
+
+            }
+
+        }
+
+    }
+);
+
+
+
+/* =====================================================
+   GARANTIR QUE O POPUP ESTEJA FECHADO AO ABRIR A PÁGINA
+===================================================== */
+
+document.addEventListener(
+    'DOMContentLoaded',
+    function() {
+
+        const modal =
+            document.getElementById(
+                'carrinho-mobile-modal'
+            );
+
+
+        if (modal) {
+
+            modal.style.display = 'none';
+
+        }
+
+
+        atualizarContadorCarrinho();
+
+    }
+);
+
+</script>

@@ -1,0 +1,3050 @@
+/* ==========================================================
+   BAR DO CELSO
+   DASHBOARD.CSS
+   PARTE 1/4
+========================================================== */
+
+
+/* ==========================
+   RESET
+========================== */
+
+
+*{
+
+    margin:0;
+    padding:0;
+
+    box-sizing:border-box;
+
+    font-family:'Poppins',sans-serif;
+
+}
+
+
+
+body{
+
+    background:#f4f7fb;
+
+    color:#1f2937;
+
+    overflow-x:hidden;
+
+}
+
+
+
+a{
+
+    text-decoration:none;
+
+}
+
+
+
+img{
+
+    max-width:100%;
+
+    display:block;
+
+}
+
+
+
+.wrapper{
+
+    display:flex;
+
+    min-height:100vh;
+
+}
+
+
+
+/* ==========================================================
+   SIDEBAR DESKTOP
+========================================================== */
+
+
+.sidebar{
+
+
+    width:290px;
+
+
+    background:#111827;
+
+
+    color:white;
+
+
+    position:fixed;
+
+
+    top:0;
+
+    left:0;
+
+
+    bottom:0;
+
+
+    padding:28px 22px;
+
+
+    display:flex;
+
+    flex-direction:column;
+
+
+    overflow-y:auto;
+
+
+    z-index:9999;
+
+
+}
+
+
+
+
+/* ==========================
+   LOGO
+========================== */
+
+
+.logo{
+
+
+    display:flex;
+
+    align-items:center;
+
+
+    gap:15px;
+
+
+    margin-bottom:35px;
+
+
+}
+
+
+
+.logo-icon{
+
+
+    width:60px;
+
+    height:60px;
+
+
+    border-radius:18px;
+
+
+    background:#4f46e5;
+
+
+    display:flex;
+
+
+    justify-content:center;
+
+
+    align-items:center;
+
+
+    color:white;
+
+
+    font-size:28px;
+
+
+}
+
+
+
+.logo h2{
+
+
+    font-size:22px;
+
+
+    font-weight:700;
+
+
+    margin:0;
+
+
+}
+
+
+
+/* ==========================
+   PERFIL
+========================== */
+
+
+.sidebar-profile{
+
+
+    display:flex;
+
+
+    align-items:center;
+
+
+    gap:15px;
+
+
+    background:#1f2937;
+
+
+    border-radius:18px;
+
+
+    padding:18px;
+
+
+    margin-bottom:35px;
+
+
+}
+
+
+
+.avatar{
+
+
+    width:60px;
+
+
+    height:60px;
+
+
+    border-radius:50%;
+
+
+    background:#374151;
+
+
+    display:flex;
+
+
+    justify-content:center;
+
+
+    align-items:center;
+
+
+    font-size:30px;
+
+
+    color:white;
+
+
+    flex-shrink:0;
+
+
+}
+
+
+
+.profile-info strong{
+
+
+    display:block;
+
+
+    font-size:15px;
+
+
+    font-weight:600;
+
+
+}
+
+
+
+.profile-info small{
+
+
+    display:block;
+
+
+    color:#94a3b8;
+
+
+    font-size:12px;
+
+
+    margin-top:3px;
+
+
+}
+
+
+
+.status{
+
+
+    margin-top:8px;
+
+
+    display:flex;
+
+
+    align-items:center;
+
+
+    gap:8px;
+
+
+    font-size:13px;
+
+
+}
+
+
+
+.online{
+
+
+    width:10px;
+
+
+    height:10px;
+
+
+    background:#22c55e;
+
+
+    border-radius:50%;
+
+
+}
+
+
+
+/* ==========================
+   MENU SIDEBAR
+========================== */
+
+
+.sidebar-menu{
+
+
+    display:flex;
+
+
+    flex-direction:column;
+
+
+    gap:8px;
+
+
+}
+
+
+
+.menu-title{
+
+
+    color:#6b7280;
+
+
+    font-size:12px;
+
+
+    text-transform:uppercase;
+
+
+    letter-spacing:1px;
+
+
+    margin-top:18px;
+
+
+    margin-bottom:6px;
+
+
+}
+
+
+
+.sidebar-menu a{
+
+
+    color:#d1d5db;
+
+
+    display:flex;
+
+
+    align-items:center;
+
+
+    gap:14px;
+
+
+    padding:14px 16px;
+
+
+    border-radius:14px;
+
+
+    transition:.3s;
+
+
+    font-size:15px;
+
+
+    font-weight:500;
+
+
+}
+
+
+
+.sidebar-menu a i{
+
+
+    font-size:18px;
+
+
+}
+
+
+
+.sidebar-menu a:hover{
+
+
+    background:#374151;
+
+
+    color:white;
+
+
+}
+
+
+
+.sidebar-menu a.active{
+
+
+    background:#4f46e5;
+
+
+    color:white;
+
+
+}
+
+
+
+
+/* ==========================
+   FOOTER SIDEBAR
+========================== */
+
+
+.sidebar-footer{
+
+
+    margin-top:auto;
+
+
+    padding-top:30px;
+
+
+}
+
+
+
+.sidebar-footer a{
+
+
+    display:flex;
+
+
+    align-items:center;
+
+
+    gap:12px;
+
+
+    padding:14px 16px;
+
+
+    border-radius:14px;
+
+
+    color:#fca5a5;
+
+
+    transition:.3s;
+
+
+}
+
+
+
+.sidebar-footer a:hover{
+
+
+    background:#7f1d1d;
+
+
+    color:white;
+
+
+}
+/* ==========================================================
+   BAR DO CELSO
+   DASHBOARD.CSS
+   PARTE 2/4
+========================================================== */
+
+
+/* ==========================
+   CONTEÚDO PRINCIPAL
+========================== */
+
+
+.content{
+
+
+    margin-left:290px;
+
+
+    width:calc(100% - 290px);
+
+
+    padding:35px;
+
+
+}
+
+
+
+
+/* ==========================
+   TOPBAR
+========================== */
+
+
+.topbar{
+
+
+    display:flex;
+
+
+    justify-content:space-between;
+
+
+    align-items:center;
+
+
+    margin-bottom:30px;
+
+
+}
+
+
+
+.top-left{
+
+
+    display:flex;
+
+
+    align-items:center;
+
+
+    gap:18px;
+
+
+}
+
+
+
+.menu-btn{
+
+
+    width:48px;
+
+
+    height:48px;
+
+
+    border:none;
+
+
+    border-radius:14px;
+
+
+    background:white;
+
+
+    box-shadow:0 8px 20px rgba(0,0,0,.06);
+
+
+    cursor:pointer;
+
+
+    font-size:20px;
+
+
+}
+
+
+
+.top-left h3{
+
+
+    margin:0;
+
+
+    font-size:28px;
+
+
+    font-weight:700;
+
+
+}
+
+
+
+.top-right{
+
+
+    display:flex;
+
+
+    align-items:center;
+
+
+    gap:15px;
+
+
+}
+
+
+
+.date{
+
+
+    background:white;
+
+
+    padding:12px 18px;
+
+
+    border-radius:14px;
+
+
+    display:flex;
+
+
+    align-items:center;
+
+
+    gap:10px;
+
+
+    box-shadow:0 8px 20px rgba(0,0,0,.05);
+
+
+    color:#64748b;
+
+
+}
+
+
+
+.store-btn{
+
+
+    border:none;
+
+
+    background:#4f46e5;
+
+
+    color:white;
+
+
+    padding:12px 22px;
+
+
+    border-radius:14px;
+
+
+    display:flex;
+
+
+    align-items:center;
+
+
+    gap:10px;
+
+
+    font-weight:600;
+
+
+    cursor:pointer;
+
+
+    transition:.3s;
+
+
+}
+
+
+
+.store-btn:hover{
+
+
+    background:#4338ca;
+
+
+}
+
+
+
+
+/* ==========================
+   BANNER
+========================== */
+
+
+.welcome-card{
+
+
+    height:230px;
+
+
+    border-radius:28px;
+
+
+    overflow:hidden;
+
+
+    position:relative;
+
+
+    margin-bottom:35px;
+
+
+    display:flex;
+
+
+    align-items:center;
+
+
+
+    background-image:
+
+
+    linear-gradient(
+
+        to right,
+
+        #f8fafc 0%,
+
+        rgba(248,250,252,.95) 30%,
+
+        rgba(248,250,252,.45) 55%,
+
+        rgba(248,250,252,.10) 75%,
+
+        transparent 100%
+
+    ),
+
+
+    url("/static/assets/img/banner-bar.png");
+
+
+
+    background-size:cover;
+
+
+    background-position:center right;
+
+
+    background-repeat:no-repeat;
+
+
+}
+
+
+
+.welcome-text{
+
+
+    width:55%;
+
+
+    padding-left:40px;
+
+
+    position:relative;
+
+
+    z-index:2;
+
+
+}
+
+
+
+.welcome-text h1{
+
+
+    color:#111827;
+
+
+    font-size:36px;
+
+
+    font-weight:700;
+
+
+    margin-bottom:15px;
+
+
+}
+
+
+
+.welcome-text p{
+
+
+    color:#64748b;
+
+
+    font-size:16px;
+
+
+}
+
+
+
+/* ==========================
+   CARDS
+========================== */
+
+
+.cards{
+
+
+    display:grid;
+
+
+    grid-template-columns:repeat(5,1fr);
+
+
+    gap:22px;
+
+
+    margin-bottom:30px;
+
+
+}
+
+
+
+.card-item{
+
+
+    background:white;
+
+
+    border-radius:22px;
+
+
+    padding:24px;
+
+
+    display:flex;
+
+
+    align-items:center;
+
+
+    gap:18px;
+
+
+    box-shadow:0 10px 30px rgba(15,23,42,.08);
+
+
+    transition:.35s;
+
+
+}
+
+
+
+.card-item:hover{
+
+
+    transform:translateY(-6px);
+
+
+    box-shadow:0 18px 40px rgba(15,23,42,.12);
+
+
+}
+
+
+
+.card-icon{
+
+
+    width:65px;
+
+
+    height:65px;
+
+
+    border-radius:18px;
+
+
+    display:flex;
+
+
+    justify-content:center;
+
+
+    align-items:center;
+
+
+    color:white;
+
+
+    font-size:28px;
+
+
+    flex-shrink:0;
+
+
+}
+
+
+
+.card-content{
+
+
+    flex:1;
+
+
+}
+
+
+
+.card-content span{
+
+
+    display:block;
+
+
+    font-size:12px;
+
+
+    color:#94a3b8;
+
+
+    font-weight:600;
+
+
+    letter-spacing:.6px;
+
+
+    margin-bottom:6px;
+
+
+}
+
+
+
+.card-content h3{
+
+
+    font-size:24px;
+
+
+    font-weight:700;
+
+
+    color:#111827;
+
+
+    margin-bottom:8px;
+
+
+}
+
+
+
+.card-content small{
+
+
+    font-size:13px;
+
+
+}
+
+
+
+/* CORES DOS ICONES */
+
+
+.purple{
+
+    background:#6d5dfc;
+
+}
+
+
+.green{
+
+    background:#10b981;
+
+}
+
+
+.blue{
+
+    background:#2563eb;
+
+}
+
+
+.orange{
+
+    background:#f59e0b;
+
+}
+
+
+.violet{
+
+    background:#7c3aed;
+
+}
+
+
+.red{
+
+    background:#ef4444;
+
+}
+
+
+
+/* ==========================
+   GRID DASHBOARD
+========================== */
+
+
+.dashboard-grid{
+
+
+    display:grid;
+
+
+    grid-template-columns:2fr 1fr;
+
+
+    gap:25px;
+
+
+    margin-bottom:30px;
+
+
+}
+
+
+
+.left-column,
+.right-column{
+
+
+    display:flex;
+
+
+    flex-direction:column;
+
+
+    gap:25px;
+
+
+}
+
+
+
+
+/* ==========================
+   PAINÉIS
+========================== */
+
+
+.dashboard-card{
+
+
+    background:white;
+
+
+    border-radius:24px;
+
+
+    padding:28px;
+
+
+    box-shadow:0 12px 30px rgba(15,23,42,.07);
+
+
+}
+
+
+
+.card-header{
+
+
+    display:flex;
+
+
+    justify-content:space-between;
+
+
+    align-items:center;
+
+
+    margin-bottom:25px;
+
+
+}
+
+
+
+.card-header h4{
+
+
+    margin:0;
+
+
+    font-size:21px;
+
+
+    font-weight:700;
+
+
+}
+
+
+
+.card-header .form-select{
+
+
+    width:180px;
+
+
+    border-radius:12px;
+
+
+}
+
+
+
+/* ==========================
+   GRÁFICO
+========================== */
+
+
+#salesChart{
+
+
+    width:100% !important;
+
+
+    height:340px !important;
+
+
+}
+
+
+
+
+/* ==========================
+   RESUMO DO GRÁFICO
+========================== */
+
+
+.sales-footer{
+
+
+    display:grid;
+
+
+    grid-template-columns:repeat(3,1fr);
+
+
+    gap:20px;
+
+
+    margin-top:30px;
+
+
+    padding-top:20px;
+
+
+    border-top:1px solid #eef2f7;
+
+
+}
+
+
+
+.sales-footer small{
+
+
+    display:block;
+
+
+    color:#94a3b8;
+
+
+    margin-bottom:8px;
+
+
+}
+
+
+
+.sales-footer h4{
+
+
+    margin:0;
+
+
+    font-size:22px;
+
+
+}
+
+
+
+
+/* ==========================
+   ALERTAS STOCK
+========================== */
+
+
+.alert-item{
+
+
+    display:flex;
+
+
+    align-items:center;
+
+
+    gap:15px;
+
+
+    padding:16px 0;
+
+
+    border-bottom:1px solid #eef2f7;
+
+
+}
+
+
+
+.alert-item:last-child{
+
+
+    border:none;
+
+
+}
+
+
+
+.alert-item img{
+
+
+    width:55px;
+
+
+    height:55px;
+
+
+    border-radius:14px;
+
+
+    object-fit:cover;
+
+
+}
+
+
+
+.alert-item strong{
+
+
+    display:block;
+
+
+    font-size:15px;
+
+
+}
+
+
+
+.alert-item small{
+
+
+    color:#6b7280;
+
+
+}
+
+
+
+.alert-item .badge{
+
+
+    margin-left:auto;
+
+
+    padding:8px 12px;
+
+
+    border-radius:999px;
+
+
+}
+
+
+.right-column .dashboard-card a{
+
+
+    color:#4f46e5;
+
+
+    font-weight:600;
+
+
+}
+/* ==========================================================
+   BAR DO CELSO
+   DASHBOARD.CSS
+   PARTE 3/4
+========================================================== */
+
+
+/* ==========================
+   MOVIMENTAÇÕES DO CAIXA
+========================== */
+
+
+.bottom-grid{
+
+
+    display:grid;
+
+
+    grid-template-columns:1fr 1fr;
+
+
+    gap:25px;
+
+
+    margin-top:30px;
+
+
+}
+
+
+
+.cash-grid{
+
+
+    display:grid;
+
+
+    grid-template-columns:1fr 1fr;
+
+
+    gap:20px;
+
+
+}
+
+
+
+.cash-card{
+
+
+    padding:22px;
+
+
+    border-radius:20px;
+
+
+    display:flex;
+
+
+    align-items:center;
+
+
+    gap:18px;
+
+
+}
+
+
+
+.cash-card span{
+
+
+    display:block;
+
+
+    font-size:12px;
+
+
+    font-weight:600;
+
+
+    color:#64748b;
+
+
+}
+
+
+
+.cash-card h3{
+
+
+    margin:0;
+
+
+    font-size:24px;
+
+
+}
+
+
+
+.cash-icon{
+
+
+    width:60px;
+
+
+    height:60px;
+
+
+    border-radius:18px;
+
+
+    display:flex;
+
+
+    justify-content:center;
+
+
+    align-items:center;
+
+
+    font-size:25px;
+
+
+}
+
+
+
+.income{
+
+
+    background:#ecfdf5;
+
+
+}
+
+
+
+.income .cash-icon{
+
+
+    background:#10b981;
+
+
+    color:white;
+
+
+}
+
+
+
+.expense{
+
+
+    background:#fef2f2;
+
+
+}
+
+
+
+.expense .cash-icon{
+
+
+    background:#ef4444;
+
+
+    color:white;
+
+
+}
+
+
+
+
+
+/* ==========================
+   DESEMPENHO
+========================== */
+
+
+.performance-grid{
+
+
+    display:flex;
+
+
+    flex-direction:column;
+
+
+    gap:20px;
+
+
+}
+
+
+
+.performance-item{
+
+
+    display:flex;
+
+
+    align-items:center;
+
+
+    gap:18px;
+
+
+    padding:18px;
+
+
+    border-radius:18px;
+
+
+    background:#f8fafc;
+
+
+}
+
+
+
+.performance-icon{
+
+
+    width:55px;
+
+
+    height:55px;
+
+
+    border-radius:16px;
+
+
+    display:flex;
+
+
+    justify-content:center;
+
+
+    align-items:center;
+
+
+    color:white;
+
+
+    font-size:23px;
+
+
+}
+
+
+
+.performance-item span{
+
+
+    display:block;
+
+
+    color:#64748b;
+
+
+    font-size:12px;
+
+
+}
+
+
+
+.performance-item h3{
+
+
+    margin:5px 0;
+
+
+    font-size:22px;
+
+
+}
+
+
+
+
+/* ==========================
+   RESUMO FINANCEIRO
+========================== */
+
+
+.financial-summary{
+
+
+    display:grid;
+
+
+    grid-template-columns:1fr 1fr;
+
+
+    gap:25px;
+
+
+    margin-bottom:30px;
+
+
+}
+
+
+
+.finance-grid{
+
+
+    display:grid;
+
+
+    grid-template-columns:repeat(3,1fr);
+
+
+    gap:20px;
+
+
+}
+
+
+
+.finance-item{
+
+
+    background:#f8fafc;
+
+
+    padding:20px;
+
+
+    border-radius:18px;
+
+
+}
+
+
+
+.finance-item span{
+
+
+    display:block;
+
+
+    color:#64748b;
+
+
+    font-size:13px;
+
+
+    font-weight:600;
+
+
+}
+
+
+
+.finance-item h3{
+
+
+    margin-top:10px;
+
+
+    font-size:22px;
+
+
+    color:#10b981;
+
+
+}
+
+
+
+.expense-box h3{
+
+
+    color:#ef4444;
+
+
+}
+
+
+
+
+
+/* ==========================
+   BOTÕES
+========================== */
+
+
+button{
+
+
+    font-family:'Poppins',sans-serif;
+
+
+}
+
+
+
+.badge{
+
+
+    font-weight:600;
+
+
+}
+
+
+
+
+
+/* ==========================
+   SCROLLBAR
+========================== */
+
+
+::-webkit-scrollbar{
+
+
+    width:8px;
+
+
+}
+
+
+
+::-webkit-scrollbar-track{
+
+
+    background:#f1f5f9;
+
+
+}
+
+
+
+::-webkit-scrollbar-thumb{
+
+
+    background:#4f46e5;
+
+
+    border-radius:20px;
+
+
+}
+
+
+
+
+
+/* ==========================
+   ANIMAÇÕES
+========================== */
+
+
+.card-item,
+.dashboard-card,
+.welcome-card{
+
+
+    animation:fadeIn .5s ease;
+
+
+}
+
+
+
+@keyframes fadeIn{
+
+
+    from{
+
+
+        opacity:0;
+
+
+        transform:translateY(20px);
+
+
+    }
+
+
+    to{
+
+
+        opacity:1;
+
+
+        transform:translateY(0);
+
+
+    }
+
+
+}
+
+
+
+
+
+/* ==========================
+   USUARIO TOPO
+========================== */
+
+
+.user-btn{
+
+
+    border:none;
+
+
+    background:white;
+
+
+    padding:12px 18px;
+
+
+    border-radius:14px;
+
+
+    display:flex;
+
+
+    align-items:center;
+
+
+    gap:10px;
+
+
+    color:#374151;
+
+
+    font-weight:600;
+
+
+    box-shadow:0 8px 20px rgba(0,0,0,.05);
+
+
+    cursor:pointer;
+
+
+}
+
+
+
+.user-btn i{
+
+
+    font-size:22px;
+
+
+    color:#4f46e5;
+
+
+}
+
+
+
+
+
+/* ==========================
+   LOGIN
+========================== */
+
+
+.login-screen{
+
+
+    position:fixed;
+
+
+    top:0;
+
+
+    left:0;
+
+
+    width:100%;
+
+
+    height:100%;
+
+
+    background:rgba(0,0,0,.65);
+
+
+    display:none;
+
+
+    justify-content:center;
+
+
+    align-items:center;
+
+
+    z-index:99999;
+
+
+}
+
+
+
+.login-box{
+
+
+    position:relative;
+
+
+    background:white;
+
+
+    padding:40px;
+
+
+    width:350px;
+
+
+    border-radius:20px;
+
+
+}
+
+
+
+.login-close{
+
+
+    position:absolute;
+
+
+    top:10px;
+
+
+    right:15px;
+
+
+    border:none;
+
+
+    background:none;
+
+
+    font-size:30px;
+
+
+    cursor:pointer;
+
+
+}
+
+
+
+.login-close:hover{
+
+
+    color:red;
+
+
+}
+
+
+
+
+
+/* ==========================
+   MODAL USUARIOS
+========================== */
+
+
+.usuarios-modal{
+
+
+    display:none;
+
+
+    position:fixed;
+
+
+    top:0;
+
+
+    left:0;
+
+
+    width:100%;
+
+
+    height:100%;
+
+
+    background:rgba(0,0,0,.6);
+
+
+    z-index:99999;
+
+
+    justify-content:center;
+
+
+    align-items:center;
+
+
+}
+
+
+
+.usuarios-modal .dashboard-card{
+
+
+    width:800px;
+
+
+    max-height:90vh;
+
+
+    overflow:auto;
+
+
+}
+
+
+
+
+
+/* ==========================
+   MENSAGENS
+========================== */
+
+
+#mensagens{
+
+
+    position:fixed;
+
+
+    top:20px;
+
+
+    right:20px;
+
+
+    z-index:999999;
+
+
+    display:flex;
+
+
+    flex-direction:column;
+
+
+    gap:10px;
+
+
+    width:320px;
+
+
+}
+
+
+
+.mensagem{
+
+
+    padding:15px;
+
+
+    border-radius:8px;
+
+
+    color:white;
+
+
+    font-weight:600;
+
+
+    box-shadow:0 8px 20px rgba(0,0,0,.25);
+
+
+}
+
+
+
+.mensagem.info{
+
+
+    background:#0d6efd;
+
+
+}
+
+
+
+.mensagem.success{
+
+
+    background:#198754;
+
+
+}
+
+
+
+.mensagem.error{
+
+
+    background:#dc3545;
+
+
+}
+
+
+
+.mensagem.warning{
+
+
+    background:#ffc107;
+
+
+    color:#000;
+
+
+}
+
+
+
+
+/* ==========================
+   RECIBO
+========================== */
+
+
+#recibo{
+
+
+    width:190mm;
+
+
+    min-height:270mm;
+
+
+    background:white;
+
+
+    padding:20mm;
+
+
+    font-family:Arial,sans-serif;
+
+
+    color:#000;
+
+
+}
+
+
+
+.recibo-header{
+
+
+    text-align:center;
+
+
+}
+
+
+
+.recibo-header h2{
+
+
+    font-size:28px;
+
+
+}
+
+
+
+.recibo-linha{
+
+
+    border-top:1px dashed #000;
+
+
+    margin:20px 0;
+
+
+}
+
+
+
+.recibo-total{
+
+
+    font-size:20px;
+
+
+    font-weight:bold;
+
+
+}
+/* ==========================================================
+   BAR DO CELSO
+   DASHBOARD.CSS
+   PARTE 4/4
+   RESPONSIVO MOBILE FINAL
+========================================================== */
+
+
+/* ==========================
+   TABLET
+========================== */
+
+
+@media(max-width:1400px){
+
+
+    .cards{
+
+        grid-template-columns:repeat(3,1fr);
+
+    }
+
+
+
+    .dashboard-grid{
+
+        grid-template-columns:1fr;
+
+    }
+
+
+}
+
+
+
+
+
+
+/* ==========================
+   TABLET PEQUENO
+========================== */
+
+
+@media(max-width:1100px){
+
+
+    .sidebar{
+
+        width:90px;
+
+        padding:20px 12px;
+
+    }
+
+
+
+    .logo h2,
+    .menu-title{
+
+        display:none;
+
+    }
+
+
+    .profile-info{
+
+        display:block !important;
+
+    }
+
+
+
+
+    .logo{
+
+        justify-content:center;
+
+    }
+
+
+
+    .sidebar-profile{
+
+        justify-content:center;
+
+    }
+
+
+
+    .sidebar-menu a{
+
+        justify-content:center;
+
+    }
+
+
+
+    .content{
+
+        margin-left:90px;
+
+        width:calc(100% - 90px);
+
+    }
+
+
+
+    .cards{
+
+        grid-template-columns:repeat(2,1fr);
+
+    }
+
+
+}
+
+
+
+
+
+
+
+/* =====================================================
+   MOBILE TELEFONE
+===================================================== */
+
+
+@media(max-width:900px){
+
+
+
+    /* ==========================
+       BLOQUEAR DESLIZE
+    ========================== */
+
+
+    html,
+    body{
+
+        width:100% !important;
+
+        max-width:100% !important;
+
+        overflow-x:hidden !important;
+
+    }
+
+
+
+    *{
+
+        max-width:100%;
+
+    }
+
+
+
+
+
+
+    /* ==========================
+       SIDEBAR MOBILE
+    ========================== */
+
+
+    .sidebar{
+
+        position:fixed !important;
+
+        top:0 !important;
+
+        left:0 !important;
+
+        width:290px !important;
+
+        height:100vh !important;
+
+        min-height:100vh !important;
+
+        background:#111827 !important;
+
+        z-index:9999 !important;
+
+        transform:translateX(-100%) !important;
+
+        transition:.3s ease !important;
+
+        display:flex !important;
+
+        flex-direction:column !important;
+
+        overflow-y:auto !important;
+
+        overflow-x:hidden !important;
+
+        padding-bottom:40px !important;
+
+    }
+
+
+
+
+
+
+    .sidebar.mobile-open{
+
+        transform:translateX(0) !important;
+
+    }
+
+
+
+
+
+
+
+    /* FUNDO ESCURO SIDEBAR */
+
+
+    .sidebar.mobile-open::after{
+
+        content:"";
+
+        position:fixed;
+
+        top:0;
+
+        left:290px;
+
+        width:calc(100vw - 290px);
+
+        height:100vh;
+
+        background:rgba(0,0,0,.45);
+
+        z-index:-1;
+
+    }
+
+
+
+
+
+
+
+    /* ==========================
+       CONTEÚDO
+    ========================== */
+
+
+    .content{
+
+        width:100% !important;
+
+        margin-left:0 !important;
+
+        padding:20px !important;
+
+    }
+
+
+
+
+
+
+    /* ==========================
+       BOTÃO MENU
+    ========================== */
+
+
+    .menu-btn{
+
+        position:fixed !important;
+
+        top:15px !important;
+
+        left:15px !important;
+
+        width:48px !important;
+
+        height:48px !important;
+
+        z-index:100000 !important;
+
+    }
+
+
+
+
+
+
+
+    /* ==========================
+       TOPBAR
+    ========================== */
+
+
+    .topbar{
+
+        width:100% !important;
+
+        padding-left:65px !important;
+
+        padding-right:10px !important;
+
+        display:flex !important;
+
+        align-items:center !important;
+
+        justify-content:space-between !important;
+
+    }
+
+
+
+    .top-left{
+
+        display:flex !important;
+
+        align-items:center !important;
+
+    }
+
+
+
+    .top-right{
+
+        display:flex !important;
+
+        align-items:center !important;
+
+        margin-left:auto !important;
+
+    }
+
+
+
+    .date,
+    .store-btn{
+
+        display:none !important;
+
+    }
+
+
+
+
+
+
+    /* LOGIN TOPO */
+
+    .user-btn{
+
+        position:relative !important;
+
+        padding:10px 12px !important;
+
+        z-index:100001 !important;
+
+        white-space:nowrap;
+
+    }
+
+
+
+
+    .user-btn i{
+
+        font-size:20px;
+
+    }
+
+
+
+
+
+
+
+
+    /* ==========================
+       BANNER
+    ========================== */
+
+
+    .welcome-card{
+
+        width:100% !important;
+
+        height:180px !important;
+
+        margin-top:20px;
+
+        border-radius:20px;
+
+        overflow:hidden;
+
+    }
+
+
+
+    .welcome-text{
+
+        width:100% !important;
+
+        padding:20px !important;
+
+        text-align:center;
+
+    }
+
+
+
+    .welcome-text h1{
+
+        font-size:24px !important;
+
+    }
+
+
+
+    .welcome-text p{
+
+        font-size:14px !important;
+
+    }
+
+
+
+
+
+
+
+
+    /* ==========================
+        CARDS MOBILE
+    ========================== */
+
+
+    .cards{
+
+        width:100% !important;
+
+        display:flex !important;
+
+        flex-direction:column !important;
+
+        gap:12px !important;
+
+    }
+
+
+
+
+    .card-item{
+
+        width:100% !important;
+
+        display:flex !important;
+
+        flex-direction:row !important;
+
+        align-items:center !important;
+
+        justify-content:flex-start !important;
+
+        padding:15px !important;
+
+        border-radius:15px !important;
+
+    }
+
+
+
+
+    .card-icon{
+
+        flex-shrink:0 !important;
+
+        width:45px !important;
+
+        height:45px !important;
+
+        display:flex !important;
+
+        align-items:center !important;
+
+        justify-content:center !important;
+
+    }
+
+
+
+
+    .card-content{
+
+        flex:1 !important;
+
+        overflow:hidden !important;
+
+    }
+
+
+
+    .card-content h3{
+
+        font-size:18px !important;
+
+        margin:0 !important;
+
+    }
+
+
+
+    .card-content span{
+
+        font-size:11px !important;
+
+    }
+
+
+
+    .card-content small{
+
+        font-size:10px !important;
+
+    }
+
+    /* ==========================
+       GRÁFICOS
+    ========================== */
+
+
+    .dashboard-card{
+
+        width:100% !important;
+
+        overflow:hidden !important;
+
+    }
+
+
+
+    canvas{
+
+        max-width:100% !important;
+
+    }
+
+
+
+    #salesChart{
+
+        width:100% !important;
+
+        height:280px !important;
+
+    }
+
+
+
+
+
+
+
+    /* ==========================
+       PAINÉIS INFERIORES MOBILE
+    ========================== */
+
+
+    .dashboard-grid,
+    .bottom-grid,
+    .financial-summary{
+
+
+        display:flex !important;
+
+        flex-direction:column !important;
+
+        width:100% !important;
+
+        max-width:100% !important;
+
+        gap:15px !important;
+
+
+    }
+
+
+
+
+
+    /* MOVIMENTAÇÕES DO CAIXA */
+
+
+    .cash-grid{
+
+
+        display:flex !important;
+
+        flex-direction:column !important;
+
+        width:100% !important;
+
+        gap:12px !important;
+
+
+    }
+
+
+
+
+    .cash-card{
+
+
+        width:100% !important;
+
+        max-width:100% !important;
+
+        box-sizing:border-box !important;
+
+
+    }
+
+
+
+
+
+    /* DESEMPENHO */
+
+
+    .performance-grid{
+
+
+        display:flex !important;
+
+        flex-direction:column !important;
+
+        width:100% !important;
+
+        gap:12px !important;
+
+
+    }
+
+
+
+
+    .performance-item{
+
+
+        width:100% !important;
+
+        max-width:100% !important;
+
+
+    }
+
+
+
+
+
+    /* RESUMO FINANCEIRO */
+
+
+    .finance-grid{
+
+
+        display:flex !important;
+
+        flex-direction:column !important;
+
+        width:100% !important;
+
+        gap:12px !important;
+
+
+    }
+
+
+
+
+
+    .finance-item{
+
+
+        width:100% !important;
+
+        max-width:100% !important;
+
+
+    }
+
+
+
+
+
+
+
+
+  /* ==========================
+       MODAIS MOBILE
+    ========================== */
+
+
+    /* LOGIN SEM SCROLL */
+
+    .login-screen{
+
+        overflow:hidden !important;
+
+    }
+
+
+
+
+
+    /* TODOS OS OUTROS MODAIS COM SCROLL */
+
+    .usuarios-modal,
+    .modal,
+    .stock-modal,
+    .produtos-modal,
+    .categorias-modal,
+    .despesas-modal,
+    .caixa-modal{
+
+        overflow:auto !important;
+
+        overflow-x:auto !important;
+
+        overflow-y:auto !important;
+
+        -webkit-overflow-scrolling:touch !important;
+
+    }
+
+
+
+
+
+    /* CONTEÚDO DOS MODAIS */
+
+    .usuarios-modal .dashboard-card,
+    .modal .dashboard-card,
+    .stock-modal .dashboard-card,
+    .produtos-modal .dashboard-card,
+    .categorias-modal .dashboard-card,
+    .despesas-modal .dashboard-card,
+    .caixa-modal{
+
+
+        max-width:95vw !important;
+
+        max-height:90vh !important;
+
+        overflow:auto !important;
+
+    }
+
+
+
+    /* CAIXA LOGIN */
+
+    .login-box{
+
+
+        overflow:hidden !important;
+
+    }
+
+/* ==========================
+   CELULAR PEQUENO
+========================== */
+
+
+@media(max-width:500px){
+
+
+
+    .content{
+
+        padding:15px !important;
+
+    }
+
+
+
+    .top-left h3{
+
+        font-size:20px;
+
+    }
+
+
+
+    .dashboard-card{
+
+        padding:15px;
+
+    }
+
+
+}

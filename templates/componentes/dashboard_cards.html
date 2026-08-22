@@ -1,0 +1,1402 @@
+<!-- =====================================
+     ESTILO DAS CARDS OCULTAS
+====================================== -->
+
+<style>
+
+    /*
+     * IMPORTANTE:
+     * O !important garante que nenhum código que
+     * atualize os dados consiga mostrar a card
+     * automaticamente.
+     */
+    .card-oculta {
+        display: none !important;
+    }
+
+
+    /*
+     * =====================================
+     * FRASES SIMPLES DE CONTROLE
+     * =====================================
+     *
+     * São spans simples.
+     *
+     * Não possuem:
+     * - width
+     * - padding
+     * - margem
+     * - área de botão
+     *
+     * Portanto, somente o texto é clicável.
+     */
+
+    .financeiro-toggle {
+        display: inline;
+        width: auto;
+        padding: 0;
+        margin: 0;
+        font-weight: 600;
+        font-size: 14px;
+        line-height: normal;
+    }
+
+
+    #toggle-faturamento {
+        cursor: pointer;
+        color: #6f42c1;
+    }
+
+
+    #toggle-despesas {
+        cursor: pointer;
+        color: #0d6efd;
+    }
+
+
+    #toggle-lucros {
+        cursor: pointer;
+        color: #198754;
+    }
+
+
+    /*
+     * LUCROS BLOQUEADOS
+     */
+
+    #toggle-lucros.bloqueado {
+        cursor: not-allowed;
+        color: #999 !important;
+        opacity: 0.6;
+        pointer-events: none;
+    }
+
+</style>
+
+
+
+<!-- =====================================
+     CARDS SUPERIORES
+====================================== -->
+
+<section class="cards">
+
+
+    <!-- =================================
+         VENDAS DE HOJE
+    ================================== -->
+
+    <div class="card-item">
+
+        <div class="card-icon purple">
+
+            <i class="bi bi-cart3"></i>
+
+        </div>
+
+        <div class="card-content">
+
+            <span>
+                VENDAS DE HOJE
+            </span>
+
+            <h3 id="vendas-dia">
+                0 MT
+            </h3>
+
+            <div
+                id="ver-detalhes-vendas"
+                style="display:none;cursor:pointer;color:blue"
+                onclick="abrirModalVendedores()"
+            >
+                Ver detalhes
+            </div>
+
+        </div>
+
+    </div>
+
+
+
+    <!-- =================================
+         SALDO DA CAIXA
+    ================================== -->
+
+    <div class="card-item">
+
+        <div class="card-icon green">
+
+            <i class="bi bi-cash-stack"></i>
+
+        </div>
+
+        <div class="card-content">
+
+            <span>
+                SALDO DA CAIXA
+            </span>
+
+            <h3 id="saldo-caixa">
+                0 MT
+            </h3>
+
+            <small
+                id="ver-detalhes-caixa"
+                style="display:none; cursor:pointer; color:blue;"
+                onclick="abrirCaixa()"
+            >
+                Ver detalhes
+            </small>
+
+        </div>
+
+    </div>
+
+
+
+    <!-- =================================
+         DINHEIRO RECOLHIDO
+    ================================== -->
+
+    <div
+        class="card-item"
+        id="card-dinheiro-recolhido"
+    >
+
+        <div class="card-icon green">
+
+            <i class="bi bi-wallet2"></i>
+
+        </div>
+
+        <div class="card-content">
+
+            <span>
+                DINHEIRO RECOLHIDO
+            </span>
+
+            <h3 id="dinheiro-recolhido">
+                0 MT
+            </h3>
+
+            <a
+                href="javascript:void(0)"
+                id="ver-detalhes-dinheiro-recolhido"
+                onclick="abrirDetalhesDinheiroRecolhido()"
+                style="display:none;"
+            >
+                Ver detalhes
+            </a>
+
+        </div>
+
+    </div>
+
+
+
+    <!-- =================================
+         PRODUTOS EM STOCK
+    ================================== -->
+
+    <div class="card-item">
+
+        <div class="card-icon violet">
+
+            <i class="bi bi-box-seam"></i>
+
+        </div>
+
+        <div class="card-content">
+
+            <span>
+                PRODUTOS EM STOCK
+            </span>
+
+            <h3 id="total-stock">
+                0
+            </h3>
+
+        </div>
+
+    </div>
+
+
+
+    <!-- =================================
+         PRODUTOS COM BAIXO STOCK
+    ================================== -->
+
+    <div class="card-item">
+
+        <div class="card-icon red">
+
+            <i class="bi bi-exclamation-triangle"></i>
+
+        </div>
+
+        <div class="card-content">
+
+            <span>
+                PRODUTOS COM BAIXO STOCK
+            </span>
+
+            <h3 id="baixo-stock">
+                0
+            </h3>
+
+            <small>
+
+                <a
+                    id="ver-detalhes-stock"
+                    href="#"
+                    onclick="abrirStock(); return false;"
+                >
+                    Ver detalhes
+                </a>
+
+            </small>
+
+        </div>
+
+    </div>
+
+
+
+   <!-- =================================
+     DESEMPENHO DA LOJA
+================================== -->
+
+<div class="card-item">
+
+    <div class="card-icon green">
+
+        <i
+            id="desempenho-icone"
+            class="bi bi-graph-up-arrow"
+        ></i>
+
+    </div>
+
+    <div class="card-content">
+
+        <span>
+            DESEMPENHO DA LOJA
+        </span>
+
+        <h3
+            id="desempenho-loja"
+            style="
+                font-size: 7px;
+                margin: 0;
+                font-weight: 600;
+            "
+        >
+        </h3>
+
+        <small
+            id="desempenho-comparacao"
+            class="text-success"
+        >
+
+            <i
+                id="desempenho-seta"
+                class="bi bi-arrow-up-right"
+            ></i>
+
+            <span id="desempenho-percentual">
+                0%
+            </span>
+
+            vs mês passado
+
+        </small>
+
+    </div>
+
+</div>
+
+
+
+    <!-- =====================================
+         VER FATURAMENTO
+    ====================================== -->
+
+    <span
+        id="toggle-faturamento"
+        class="financeiro-toggle"
+        onclick="alternarFaturamento()"
+    >
+        Ver faturamento
+    </span>
+
+
+
+    <!-- =====================================
+         FATURAMENTO - HOJE
+    ====================================== -->
+
+    <div
+        class="card-item card-faturamento card-oculta"
+        id="card-faturamento-dia"
+    >
+
+        <div class="card-icon purple">
+
+            <i class="bi bi-cash-stack"></i>
+
+        </div>
+
+        <div class="card-content">
+
+            <span>
+                FATURAMENTO - HOJE
+            </span>
+
+            <h3 id="faturamento-dia">
+                0,00 MT
+            </h3>
+
+        </div>
+
+    </div>
+
+
+
+    <!-- =====================================
+         FATURAMENTO - SEMANA
+    ====================================== -->
+
+    <div
+        class="card-item card-faturamento card-oculta"
+        id="card-faturamento-semana"
+    >
+
+        <div class="card-icon purple">
+
+            <i class="bi bi-calendar-week"></i>
+
+        </div>
+
+        <div class="card-content">
+
+            <span>
+                FATURAMENTO - SEMANA
+            </span>
+
+            <h3 id="faturamento-semana">
+                0,00 MT
+            </h3>
+
+        </div>
+
+    </div>
+
+
+
+    <!-- =====================================
+         FATURAMENTO - MÊS
+    ====================================== -->
+
+    <div
+        class="card-item card-faturamento card-oculta"
+        id="card-faturamento-mes"
+    >
+
+        <div class="card-icon purple">
+
+            <i class="bi bi-calendar-month"></i>
+
+        </div>
+
+        <div class="card-content">
+
+            <span>
+                FATURAMENTO - MÊS
+            </span>
+
+            <h3 id="faturamento-mes">
+                0,00 MT
+            </h3>
+
+        </div>
+
+    </div>
+
+
+
+    <!-- =====================================
+         FATURAMENTO - ANO
+    ====================================== -->
+
+    <div
+        class="card-item card-faturamento card-oculta"
+        id="card-faturamento-ano"
+    >
+
+        <div class="card-icon purple">
+
+            <i class="bi bi-calendar3"></i>
+
+        </div>
+
+        <div class="card-content">
+
+            <span>
+                FATURAMENTO - ANO
+            </span>
+
+            <h3 id="faturamento-ano">
+                0,00 MT
+            </h3>
+
+        </div>
+
+    </div>
+
+
+
+    <!-- =================================================
+         ================== DESPESAS =====================
+    ================================================== -->
+
+
+    <!-- =====================================
+         VER DESPESAS
+    ====================================== -->
+
+    <span
+        id="toggle-despesas"
+        class="financeiro-toggle"
+        onclick="alternarDespesas()"
+    >
+        Ver despesas
+    </span>
+
+
+
+    <!-- =====================================
+         DESPESAS - HOJE
+    ====================================== -->
+
+    <div
+        class="card-item card-despesa card-oculta"
+        id="card-despesas-dia"
+    >
+
+        <div class="card-icon red">
+
+            <i class="bi bi-arrow-down-circle"></i>
+
+        </div>
+
+        <div class="card-content">
+
+            <span>
+                DESPESAS - HOJE
+            </span>
+
+            <h3 id="despesas-dia">
+                0,00 MT
+            </h3>
+
+        </div>
+
+    </div>
+
+
+
+    <!-- =====================================
+         DESPESAS - SEMANA
+    ====================================== -->
+
+    <div
+        class="card-item card-despesa card-oculta"
+        id="card-despesas-semana"
+    >
+
+        <div class="card-icon red">
+
+            <i class="bi bi-calendar-week"></i>
+
+        </div>
+
+        <div class="card-content">
+
+            <span>
+                DESPESAS - SEMANA
+            </span>
+
+            <h3 id="despesas-semana">
+                0,00 MT
+            </h3>
+
+        </div>
+
+    </div>
+
+
+
+    <!-- =====================================
+         DESPESAS - MÊS
+    ====================================== -->
+
+    <div
+        class="card-item card-despesa card-oculta"
+        id="card-despesas-mes"
+    >
+
+        <div class="card-icon red">
+
+            <i class="bi bi-calendar-month"></i>
+
+        </div>
+
+        <div class="card-content">
+
+            <span>
+                DESPESAS - MÊS
+            </span>
+
+            <h3 id="despesas-mes">
+                0,00 MT
+            </h3>
+
+        </div>
+
+    </div>
+
+
+
+    <!-- =====================================
+         DESPESAS - ANO
+    ====================================== -->
+
+    <div
+        class="card-item card-despesa card-oculta"
+        id="card-despesas-ano"
+    >
+
+        <div class="card-icon red">
+
+            <i class="bi bi-calendar3"></i>
+
+        </div>
+
+        <div class="card-content">
+
+            <span>
+                DESPESAS - ANO
+            </span>
+
+            <h3 id="despesas-ano">
+                0,00 MT
+            </h3>
+
+        </div>
+
+    </div>
+
+
+
+    <!-- =================================================
+         ==================== LUCROS =====================
+    ================================================== -->
+
+
+    <!-- =====================================
+         VER LUCROS
+    ====================================== -->
+
+    <span
+        id="toggle-lucros"
+        class="financeiro-toggle"
+        onclick="alternarLucros()"
+    >
+        Ver lucros
+    </span>
+
+
+
+    <!-- =====================================
+         LUCROS - HOJE
+    ====================================== -->
+
+    <div
+        class="card-item card-lucro card-oculta"
+        id="card-lucro-dia"
+    >
+
+        <div class="card-icon green">
+
+            <i class="bi bi-graph-up-arrow"></i>
+
+        </div>
+
+        <div class="card-content">
+
+            <span>
+                LUCROS - HOJE
+            </span>
+
+
+            <!-- LUCRO BRUTO -->
+
+            <div
+                style="
+                    display:flex;
+                    justify-content:space-between;
+                    align-items:flex-end;
+                    gap:15px;
+                    margin-top:8px;
+                "
+            >
+
+                <div>
+
+                    <small
+                        style="
+                            display:block;
+                            color:#777;
+                            font-size:10px;
+                        "
+                    >
+                        LUCRO BRUTO
+                    </small>
+
+                    <strong
+                        id="lucro-bruto-dia"
+                        style="
+                            display:block;
+                            font-size:17px;
+                            color:#6f42c1;
+                        "
+                    >
+                        0,00 MT
+                    </strong>
+
+                </div>
+
+
+                <!-- LUCRO LÍQUIDO -->
+
+                <div>
+
+                    <small
+                        style="
+                            display:block;
+                            color:#777;
+                            font-size:10px;
+                        "
+                    >
+                        LUCRO LÍQUIDO
+                    </small>
+
+                    <strong
+                        id="lucro-liquido-dia"
+                        style="
+                            display:block;
+                            font-size:17px;
+                            color:#198754;
+                        "
+                    >
+                        0,00 MT
+                    </strong>
+
+                </div>
+
+            </div>
+
+        </div>
+
+    </div>
+
+
+
+    <!-- =====================================
+         LUCROS - SEMANA
+    ====================================== -->
+
+    <div
+        class="card-item card-lucro card-oculta"
+        id="card-lucro-semana"
+    >
+
+        <div class="card-icon green">
+
+            <i class="bi bi-calendar-week"></i>
+
+        </div>
+
+        <div class="card-content">
+
+            <span>
+                LUCROS - SEMANA
+            </span>
+
+
+            <div
+                style="
+                    display:flex;
+                    justify-content:space-between;
+                    align-items:flex-end;
+                    gap:15px;
+                    margin-top:8px;
+                "
+            >
+
+                <div>
+
+                    <small
+                        style="
+                            display:block;
+                            color:#777;
+                            font-size:10px;
+                        "
+                    >
+                        LUCRO BRUTO
+                    </small>
+
+                    <strong
+                        id="lucro-bruto-semana"
+                        style="
+                            display:block;
+                            font-size:17px;
+                            color:#6f42c1;
+                        "
+                    >
+                        0,00 MT
+                    </strong>
+
+                </div>
+
+
+                <div>
+
+                    <small
+                        style="
+                            display:block;
+                            color:#777;
+                            font-size:10px;
+                        "
+                    >
+                        LUCRO LÍQUIDO
+                    </small>
+
+                    <strong
+                        id="lucro-liquido-semana"
+                        style="
+                            display:block;
+                            font-size:17px;
+                            color:#198754;
+                        "
+                    >
+                        0,00 MT
+                    </strong>
+
+                </div>
+
+            </div>
+
+        </div>
+
+    </div>
+
+
+
+    <!-- =====================================
+         LUCROS - MÊS
+    ====================================== -->
+
+    <div
+        class="card-item card-lucro card-oculta"
+        id="card-lucro-mes"
+    >
+
+        <div class="card-icon green">
+
+            <i class="bi bi-calendar-month"></i>
+
+        </div>
+
+        <div class="card-content">
+
+            <span>
+                LUCROS - MÊS
+            </span>
+
+
+            <div
+                style="
+                    display:flex;
+                    justify-content:space-between;
+                    align-items:flex-end;
+                    gap:15px;
+                    margin-top:8px;
+                "
+            >
+
+                <div>
+
+                    <small
+                        style="
+                            display:block;
+                            color:#777;
+                            font-size:10px;
+                        "
+                    >
+                        LUCRO BRUTO
+                    </small>
+
+                    <strong
+                        id="lucro-bruto-mes"
+                        style="
+                            display:block;
+                            font-size:17px;
+                            color:#6f42c1;
+                        "
+                    >
+                        0,00 MT
+                    </strong>
+
+                </div>
+
+
+                <div>
+
+                    <small
+                        style="
+                            display:block;
+                            color:#777;
+                            font-size:10px;
+                        "
+                    >
+                        LUCRO LÍQUIDO
+                    </small>
+
+                    <strong
+                        id="lucro-liquido-mes"
+                        style="
+                            display:block;
+                            font-size:17px;
+                            color:#198754;
+                        "
+                    >
+                        0,00 MT
+                    </strong>
+
+                </div>
+
+            </div>
+
+        </div>
+
+    </div>
+
+
+
+    <!-- =====================================
+         LUCROS - ANO
+    ====================================== -->
+
+    <div
+        class="card-item card-lucro card-oculta"
+        id="card-lucro-ano"
+    >
+
+        <div class="card-icon green">
+
+            <i class="bi bi-calendar3"></i>
+
+        </div>
+
+        <div class="card-content">
+
+            <span>
+                LUCROS - ANO
+            </span>
+
+
+            <div
+                style="
+                    display:flex;
+                    justify-content:space-between;
+                    align-items:flex-end;
+                    gap:15px;
+                    margin-top:8px;
+                "
+            >
+
+                <div>
+
+                    <small
+                        style="
+                            display:block;
+                            color:#777;
+                            font-size:10px;
+                        "
+                    >
+                        LUCRO BRUTO
+                    </small>
+
+                    <strong
+                        id="lucro-bruto-ano"
+                        style="
+                            display:block;
+                            font-size:17px;
+                            color:#6f42c1;
+                        "
+                    >
+                        0,00 MT
+                    </strong>
+
+                </div>
+
+
+                <div>
+
+                    <small
+                        style="
+                            display:block;
+                            color:#777;
+                            font-size:10px;
+                        "
+                    >
+                        LUCRO LÍQUIDO
+                    </strong>
+                    </small>
+
+                </div>
+
+
+                <div>
+
+                    <small
+                        style="
+                            display:block;
+                            color:#777;
+                            font-size:10px;
+                        "
+                    >
+                        LUCRO LÍQUIDO
+                    </small>
+
+                    <strong
+                        id="lucro-liquido-ano"
+                        style="
+                            display:block;
+                            font-size:17px;
+                            color:#198754;
+                        "
+                    >
+                        0,00 MT
+                    </strong>
+
+                </div>
+
+            </div>
+
+        </div>
+
+    </div>
+
+
+</section>
+
+
+
+<!-- =====================================================
+     JAVASCRIPT
+===================================================== -->
+
+<script>
+
+
+/* =====================================================
+   MOSTRAR / OCULTAR DESPESAS
+===================================================== */
+
+function alternarDespesas() {
+
+    const cards =
+        document.querySelectorAll('.card-despesa');
+
+    const frase =
+        document.getElementById('toggle-despesas');
+
+    if (!cards.length || !frase) {
+        return;
+    }
+
+
+    /*
+     * Verifica se estão ocultas pela classe.
+     */
+
+    const estaoOcultas =
+        cards[0].classList.contains('card-oculta');
+
+
+    if (estaoOcultas) {
+
+        /*
+         * Mostra as cards.
+         */
+
+        cards.forEach(function(card) {
+
+            card.classList.remove('card-oculta');
+
+        });
+
+        frase.textContent =
+            'Ocultar despesas';
+
+    } else {
+
+        /*
+         * Oculta novamente.
+         */
+
+        cards.forEach(function(card) {
+
+            card.classList.add('card-oculta');
+
+        });
+
+        frase.textContent =
+            'Ver despesas';
+
+    }
+
+}
+
+
+
+/* =====================================================
+   MOSTRAR / OCULTAR FATURAMENTO
+===================================================== */
+
+function alternarFaturamento() {
+
+    const cards =
+        document.querySelectorAll('.card-faturamento');
+
+    const frase =
+        document.getElementById('toggle-faturamento');
+
+    if (!cards.length || !frase) {
+        return;
+    }
+
+
+    /*
+     * Verifica se estão ocultas pela classe.
+     */
+
+    const estaoOcultas =
+        cards[0].classList.contains('card-oculta');
+
+
+    if (estaoOcultas) {
+
+        /*
+         * Mostra as cards de faturamento.
+         */
+
+        cards.forEach(function(card) {
+
+            card.classList.remove('card-oculta');
+
+        });
+
+        frase.textContent =
+            'Ocultar faturamento';
+
+    } else {
+
+        /*
+         * Oculta novamente.
+         */
+
+        cards.forEach(function(card) {
+
+            card.classList.add('card-oculta');
+
+        });
+
+        frase.textContent =
+            'Ver faturamento';
+
+    }
+
+}
+
+
+
+/* =====================================================
+   VERIFICAR PERMISSÃO PARA VER LUCROS
+===================================================== */
+
+function usuarioPodeVerLucros() {
+
+    let cargo = '';
+
+
+    /*
+     * Primeiro tenta obter o usuário global.
+     */
+
+    if (
+        typeof window.usuarioLogado !== 'undefined' &&
+        window.usuarioLogado
+    ) {
+
+        cargo =
+            window.usuarioLogado.cargo ||
+            window.usuarioLogado.role ||
+            window.usuarioLogado.perfil ||
+            window.usuarioLogado.tipo ||
+            '';
+
+    }
+
+
+    /*
+     * Depois tenta localStorage.
+     */
+
+    if (!cargo) {
+
+        try {
+
+            const dados =
+                localStorage.getItem('usuarioLogado');
+
+            if (dados) {
+
+                const usuario =
+                    JSON.parse(dados);
+
+                cargo =
+                    usuario.cargo ||
+                    usuario.role ||
+                    usuario.perfil ||
+                    usuario.tipo ||
+                    '';
+
+            }
+
+        } catch (erro) {
+
+            console.warn(
+                'Erro ao verificar usuário logado:',
+                erro
+            );
+
+        }
+
+    }
+
+
+    /*
+     * Também verifica se o cargo está salvo
+     * diretamente no localStorage.
+     */
+
+    if (!cargo) {
+
+        cargo =
+            localStorage.getItem('cargo') ||
+            localStorage.getItem('role') ||
+            localStorage.getItem('perfil') ||
+            '';
+
+    }
+
+
+    /*
+     * Normalizar.
+     */
+
+    cargo =
+        String(cargo)
+            .trim()
+            .toLowerCase();
+
+
+    /*
+     * Somente ADMIN e GERENTE.
+     */
+
+    return (
+        cargo === 'admin' ||
+        cargo === 'administrador' ||
+        cargo === 'gerente'
+    );
+
+}
+
+
+
+/* =====================================================
+   MOSTRAR / OCULTAR LUCROS
+===================================================== */
+
+function alternarLucros() {
+
+    /*
+     * Verificação de permissão.
+     */
+
+    if (!usuarioPodeVerLucros()) {
+
+        return;
+
+    }
+
+
+    const cards =
+        document.querySelectorAll('.card-lucro');
+
+    const frase =
+        document.getElementById('toggle-lucros');
+
+
+    if (!cards.length || !frase) {
+
+        return;
+
+    }
+
+
+    /*
+     * Verifica pela classe e NÃO pelo display.
+     */
+
+    const estaoOcultas =
+        cards[0].classList.contains('card-oculta');
+
+
+    if (estaoOcultas) {
+
+        /*
+         * Agora o usuário clicou.
+         * Portanto podemos mostrar.
+         */
+
+        cards.forEach(function(card) {
+
+            card.classList.remove('card-oculta');
+
+        });
+
+        frase.textContent =
+            'Ocultar lucros';
+
+    } else {
+
+        /*
+         * Ocultar novamente.
+         */
+
+        cards.forEach(function(card) {
+
+            card.classList.add('card-oculta');
+
+        });
+
+        frase.textContent =
+            'Ver lucros';
+
+    }
+
+}
+
+
+
+/* =====================================================
+   CONFIGURAR ACESSO AO TEXTO DE LUCROS
+===================================================== */
+
+function configurarAcessoLucros() {
+
+    const frase =
+        document.getElementById('toggle-lucros');
+
+
+    if (!frase) {
+
+        return;
+
+    }
+
+
+    if (usuarioPodeVerLucros()) {
+
+        /*
+         * ADMIN / GERENTE
+         */
+
+        frase.classList.remove('bloqueado');
+
+        frase.style.pointerEvents = 'auto';
+
+        frase.style.cursor = 'pointer';
+
+        frase.style.color = '#198754';
+
+        frase.style.opacity = '1';
+
+    } else {
+
+        /*
+         * OUTROS USUÁRIOS
+         */
+
+        frase.classList.add('bloqueado');
+
+        frase.style.pointerEvents = 'none';
+
+        frase.style.cursor = 'not-allowed';
+
+        frase.style.color = '#999';
+
+        frase.style.opacity = '0.6';
+
+    }
+
+}
+
+
+
+/* =====================================================
+   GARANTIR QUE AS CARDS DE LUCRO COMEÇAM OCULTAS
+===================================================== */
+
+function garantirLucrosOcultos() {
+
+    const cards =
+        document.querySelectorAll('.card-lucro');
+
+
+    cards.forEach(function(card) {
+
+        /*
+         * Nunca deixamos outro código que carregue
+         * os valores remover a proteção.
+         */
+
+        if (
+            !card.dataset.lucrosAutorizados &&
+            !card.classList.contains('card-oculta')
+        ) {
+
+            card.classList.add('card-oculta');
+
+        }
+
+    });
+
+}
+
+</script>

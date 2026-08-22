@@ -1,0 +1,111 @@
+<!-- MODAL CATEGORIAS -->
+
+<div id="categorias-panel" class="usuarios-modal" style="display:none;">
+
+    <div class="dashboard-card usuarios-box">
+
+        <div class="card-header">
+
+            <h4>
+                Gestão de Categorias
+            </h4>
+
+            <button
+                class="btn btn-danger"
+                onclick="fecharCategorias()">
+
+                <i class="bi bi-x-lg"></i>
+
+            </button>
+
+        </div>
+
+
+        <button
+            class="btn btn-primary mb-3"
+            onclick="mostrarFormularioCategoria()">
+
+            <i class="bi bi-plus"></i>
+
+            Nova Categoria
+
+        </button>
+
+
+        <div id="form-categoria" style="display:none;">
+
+            <input
+                id="categoria-id"
+                type="hidden">
+
+
+            <input
+                id="categoria-nome"
+                type="text"
+                class="form-control mb-2"
+                placeholder="Nome da categoria"
+                autocomplete="off">
+
+
+            <textarea
+                id="categoria-descricao"
+                class="form-control mb-3"
+                placeholder="Descrição (Opcional)"
+                rows="3"></textarea>
+
+
+            <button
+                class="btn btn-success"
+                onclick="salvarCategoria()">
+
+                Salvar
+
+            </button>
+
+
+            <button
+                class="btn btn-secondary"
+                onclick="fecharFormularioCategoria()">
+
+                Cancelar
+
+            </button>
+
+        </div>
+
+
+        <hr>
+
+
+        <table class="table">
+
+            <thead>
+
+                <tr>
+
+                    <th>
+                        Nome
+                    </th>
+
+                    <th>
+                        Descrição
+                    </th>
+
+                    <th>
+                        Ações
+                    </th>
+
+                </tr>
+
+            </thead>
+
+
+            <tbody id="lista-categorias">
+
+            </tbody>
+
+        </table>
+
+    </div>
+
+</div>

@@ -1,0 +1,287 @@
+
+<!-- =====================================================
+     MODAL DE DESPESAS
+===================================================== -->
+
+<div
+    id="modal-despesas"
+    class="modal"
+    style="
+        display:none;
+        position:fixed;
+        top:0;
+        left:0;
+        width:100%;
+        height:100%;
+        background:rgba(0,0,0,0.5);
+        z-index:9999;
+        align-items:center;
+        justify-content:center;
+    "
+>
+
+
+    <!-- =================================================
+         CONTEÚDO DO MODAL
+    ================================================== -->
+
+    <div
+        style="
+            background:white;
+            padding:20px;
+            width:850px;
+            max-width:95%;
+            border-radius:10px;
+            max-height:85%;
+            overflow:auto;
+        "
+    >
+
+
+        <!-- =================================================
+             CABEÇALHO
+        ================================================== -->
+
+        <div class="d-flex justify-content-between align-items-center">
+
+            <h4 class="mb-0">
+                Gestão de Despesas
+            </h4>
+
+
+            <button
+                type="button"
+                class="btn btn-danger"
+                onclick="fecharDespesas()"
+            >
+
+                X
+
+            </button>
+
+        </div>
+
+
+        <hr>
+
+
+        <!-- =================================================
+             BOTÃO NOVA DESPESA
+        ================================================== -->
+
+        <button
+            id="btn-nova-despesa"
+            type="button"
+            class="btn btn-primary mb-3"
+            onclick="abrirFormularioDespesa()"
+        >
+
+            <i class="bi bi-plus"></i>
+
+            Nova despesa
+
+        </button>
+
+
+
+        <!-- =================================================
+             FORMULÁRIO
+        ================================================== -->
+
+        <div
+            id="formulario-despesa"
+            style="display:none;"
+        >
+
+
+            <!-- DESCRIÇÃO -->
+
+            <div class="mb-2">
+
+                <label
+                    for="despesa-descricao"
+                    class="form-label"
+                >
+                    Descrição
+                </label>
+
+
+                <input
+                    type="text"
+                    id="despesa-descricao"
+                    class="form-control"
+                    placeholder="Ex: Compra de gelo"
+                >
+
+            </div>
+
+
+
+            <!-- CATEGORIA -->
+
+            <div class="mb-2">
+
+                <label
+                    for="despesa-categoria"
+                    class="form-label"
+                >
+                    Categoria
+                </label>
+
+
+                <input
+                    type="text"
+                    id="despesa-categoria"
+                    class="form-control"
+                    placeholder="Ex: Fornecedor"
+                >
+
+            </div>
+
+
+
+            <!-- VALOR -->
+
+            <div class="mb-2">
+
+                <label
+                    for="despesa-valor"
+                    class="form-label"
+                >
+                    Valor proposto
+                </label>
+
+
+                <input
+                    type="number"
+                    step="0.01"
+                    min="0.01"
+                    id="despesa-valor"
+                    class="form-control"
+                    placeholder="0.00"
+                >
+
+            </div>
+
+
+
+            <!-- OBSERVAÇÃO -->
+
+            <div class="mb-2">
+
+                <label
+                    for="despesa-observacao"
+                    class="form-label"
+                >
+                    Observação
+                </label>
+
+
+                <textarea
+                    id="despesa-observacao"
+                    class="form-control"
+                    placeholder="Detalhes da despesa"
+                ></textarea>
+
+            </div>
+
+
+
+            <!-- BOTÃO ENVIAR -->
+
+            <button
+                type="button"
+                class="btn btn-success"
+                onclick="salvarDespesa()"
+            >
+
+                <i class="bi bi-send"></i>
+
+                Enviar pedido
+
+            </button>
+
+
+        </div>
+
+
+        <hr>
+
+
+        <!-- =================================================
+             LISTA
+        ================================================== -->
+
+        <h5>
+            Lista de despesas
+        </h5>
+
+
+
+        <!-- =================================================
+             FILTRO
+        ================================================== -->
+
+        <div class="mb-3">
+
+            <label
+                for="filtro-despesas"
+                class="form-label"
+            >
+
+                Filtrar despesas
+
+            </label>
+
+
+            <div class="input-group">
+
+
+                <span class="input-group-text">
+
+                    <i class="bi bi-search"></i>
+
+                </span>
+
+
+
+                <input
+                    type="text"
+                    id="filtro-despesas"
+                    class="form-control"
+                    placeholder="Nome, descrição, categoria, valor, estado ou data..."
+                    autocomplete="off"
+                >
+
+
+
+                <button
+                    type="button"
+                    id="limpar-filtro-despesas"
+                    class="btn btn-outline-secondary"
+                    title="Limpar filtro"
+                >
+
+                    <i class="bi bi-x-lg"></i>
+
+                </button>
+
+
+            </div>
+
+        </div>
+
+
+
+        <!-- =================================================
+             TABELA
+        ================================================== -->
+
+        <div id="lista-despesas">
+
+        </div>
+
+
+    </div>
+
+</div>

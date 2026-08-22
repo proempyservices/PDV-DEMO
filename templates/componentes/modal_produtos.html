@@ -1,0 +1,252 @@
+<!-- =====================================================
+     MODAL PRODUTOS
+     ===================================================== -->
+
+<div
+    id="produtos-panel"
+    class="usuarios-modal"
+    style="display:none;">
+
+    <div class="dashboard-card usuarios-box">
+
+
+        <!-- =================================================
+             CABEÇALHO
+             ================================================= -->
+
+        <div class="card-header">
+
+            <h4>
+                Gestão de Produtos
+            </h4>
+
+            <button
+                type="button"
+                class="btn btn-danger"
+                onclick="fecharProdutos()">
+
+                <i class="bi bi-x-lg"></i>
+
+            </button>
+
+        </div>
+
+
+        <!-- =================================================
+             NOVO PRODUTO
+             ================================================= -->
+
+        <button
+            type="button"
+            class="btn btn-primary mb-3"
+            onclick="mostrarFormularioProduto()">
+
+            <i class="bi bi-plus"></i>
+
+            Novo Produto
+
+        </button>
+
+
+        <!-- =================================================
+             FORMULÁRIO PRODUTO
+             ================================================= -->
+
+        <div
+            id="form-produto"
+            style="display:none;">
+
+            <!-- ID -->
+            <input
+                id="produto-id"
+                type="hidden">
+
+
+            <!-- CATEGORIA -->
+            <select
+                id="produto-categoria"
+                class="form-control mb-2">
+
+                <option value="">
+                    Selecione a categoria
+                </option>
+
+            </select>
+
+
+            <!-- NOME -->
+            <input
+                id="produto-nome"
+                type="text"
+                class="form-control mb-2"
+                placeholder="Nome do produto"
+                autocomplete="off">
+
+
+            <!-- DESCRIÇÃO -->
+            <textarea
+                id="produto-descricao"
+                class="form-control mb-2"
+                placeholder="Descrição"
+                rows="3"></textarea>
+
+
+            <!-- PREÇO DE COMPRA -->
+            <input
+                id="produto-compra"
+                type="number"
+                step="0.01"
+                min="0"
+                class="form-control mb-2"
+                placeholder="Preço de compra">
+
+
+            <!-- PREÇO DE VENDA -->
+            <input
+                id="produto-venda"
+                type="number"
+                step="0.01"
+                min="0"
+                class="form-control mb-2"
+                placeholder="Preço de venda">
+
+
+            <!-- QUANTIDADE -->
+            <input
+                id="produto-quantidade"
+                type="number"
+                min="0"
+                class="form-control mb-2"
+                placeholder="Quantidade">
+
+
+            <!-- STOCK MÍNIMO -->
+            <input
+                id="produto-minimo"
+                type="number"
+                min="0"
+                class="form-control mb-2"
+                placeholder="Stock mínimo">
+
+
+            <!-- UNIDADE -->
+            <input
+                id="produto-unidade"
+                type="text"
+                class="form-control mb-3"
+                placeholder="Unidade"
+                autocomplete="off">
+
+
+            <!-- BOTÕES -->
+            <div class="d-flex gap-2">
+
+                <button
+                    type="button"
+                    class="btn btn-success"
+                    onclick="salvarProduto()">
+
+                    <i class="bi bi-check-lg"></i>
+
+                    Salvar
+
+                </button>
+
+
+                <button
+                    type="button"
+                    class="btn btn-secondary"
+                    onclick="fecharFormularioProduto()">
+
+                    Cancelar
+
+                </button>
+
+            </div>
+
+        </div>
+
+
+        <!-- =================================================
+             SEPARADOR
+             ================================================= -->
+
+        <hr>
+
+
+        <!-- =================================================
+             TABELA DE PRODUTOS
+             ================================================= -->
+
+        <div style="overflow-x:auto;">
+
+            <table class="table table-hover">
+
+                <thead>
+
+                    <tr>
+
+                        <th>
+                            ID
+                        </th>
+
+                        <th>
+                            Categoria ID
+                        </th>
+
+                        <th>
+                            Nome
+                        </th>
+
+                        <th>
+                            Descrição
+                        </th>
+
+                        <th>
+                            Preço Compra
+                        </th>
+
+                        <th>
+                            Preço Venda
+                        </th>
+
+                        <th>
+                            Quantidade
+                        </th>
+
+                        <th>
+                            Stock Mínimo
+                        </th>
+
+                        <th>
+                            Unidade
+                        </th>
+
+                        <th>
+                            Estado
+                        </th>
+
+                        <th>
+                            Criado Em
+                        </th>
+
+                        <th>
+                            Ações
+                        </th>
+
+                    </tr>
+
+                </thead>
+
+
+                <tbody id="lista-produtos">
+
+                </tbody>
+
+            </table>
+
+        </div>
+
+    </div>
+
+</div>

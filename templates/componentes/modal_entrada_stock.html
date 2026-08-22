@@ -1,0 +1,339 @@
+<!-- ===================================================== -->
+<!-- MODAL STOCK -->
+<!-- ===================================================== -->
+
+<div id="stock-panel"
+     class="usuarios-modal"
+     style="display:none;">
+
+    <div class="dashboard-card usuarios-box">
+
+        <!-- ============================================= -->
+        <!-- CABEÇALHO -->
+        <!-- ============================================= -->
+
+        <div class="card-header">
+
+            <h4>
+                Gestão de Stock
+            </h4>
+
+            <button
+                class="btn btn-danger"
+                onclick="fecharStock()">
+
+                <i class="bi bi-x-lg"></i>
+
+            </button>
+
+        </div>
+
+
+        <!-- ============================================= -->
+        <!-- TABELA -->
+        <!-- ============================================= -->
+
+        <div style="overflow-x:auto;">
+
+            <table class="table table-hover">
+
+                <thead>
+
+                    <tr>
+
+                        <th>
+                            ID
+                        </th>
+
+                        <th>
+                            Produto
+                        </th>
+
+                        <th>
+                            Categoria
+                        </th>
+
+                        <th>
+                            Quantidade
+                        </th>
+
+                        <th>
+                            Stock Mínimo
+                        </th>
+
+                        <th>
+                            Estado
+                        </th>
+
+                        <th>
+                            Ação
+                        </th>
+
+                    </tr>
+
+                </thead>
+
+
+                <tbody id="lista-stock">
+
+                    <!--
+                        Os produtos serão
+                        carregados pelo JavaScript
+                    -->
+
+                </tbody>
+
+            </table>
+
+        </div>
+
+    </div>
+
+</div>
+
+
+<!-- ===================================================== -->
+<!-- MODAL ENTRADA DE STOCK -->
+<!-- ===================================================== -->
+
+<div id="entrada-stock-panel"
+     class="usuarios-modal"
+     style="display:none;">
+
+    <div class="dashboard-card"
+         style="width:450px; max-width:95%;">
+
+        <!-- ============================================= -->
+        <!-- CABEÇALHO -->
+        <!-- ============================================= -->
+
+        <div class="card-header">
+
+            <h4>
+                Entrada de Stock
+            </h4>
+
+            <button
+                type="button"
+                class="btn btn-danger"
+                onclick="fecharEntradaStock()">
+
+                <i class="bi bi-x-lg"></i>
+
+            </button>
+
+        </div>
+
+
+        <!-- ============================================= -->
+        <!-- FORMULÁRIO -->
+        <!-- ============================================= -->
+
+        <div style="padding-top:15px;">
+
+
+            <!-- ========================================= -->
+            <!-- ID DO PRODUTO -->
+            <!-- ========================================= -->
+
+            <input
+                id="entrada-produto-id"
+                type="hidden">
+
+
+            <!-- ========================================= -->
+            <!-- PRODUTO -->
+            <!-- ========================================= -->
+
+            <div class="mb-3">
+
+                <label
+                    for="entrada-produto"
+                    class="form-label">
+
+                    Produto
+
+                </label>
+
+
+                <input
+                    id="entrada-produto"
+                    type="text"
+                    class="form-control"
+                    readonly>
+
+            </div>
+
+
+            <!-- ========================================= -->
+            <!-- QUANTIDADE -->
+            <!-- ========================================= -->
+
+            <div class="mb-3">
+
+                <label
+                    for="entrada-quantidade"
+                    class="form-label">
+
+                    Quantidade
+
+                </label>
+
+
+                <input
+                    id="entrada-quantidade"
+                    type="number"
+                    min="1"
+                    step="1"
+                    class="form-control"
+                    placeholder="Ex: 3">
+
+
+                <small class="text-muted">
+
+                    Quantidade de unidades que
+                    serão adicionadas ao novo lote.
+
+                </small>
+
+            </div>
+
+
+            <!-- ========================================= -->
+            <!-- PREÇO DE COMPRA -->
+            <!-- ========================================= -->
+
+            <div class="mb-3">
+
+                <label
+                    for="entrada-preco-compra"
+                    class="form-label">
+
+                    Preço de compra
+
+                </label>
+
+
+                <input
+                    id="entrada-preco-compra"
+                    type="number"
+                    min="0.01"
+                    step="0.01"
+                    class="form-control"
+                    placeholder="Ex: 20.00">
+
+
+                <small class="text-muted">
+
+                    Preço pago por cada unidade
+                    deste novo lote.
+
+                </small>
+
+            </div>
+
+
+            <!-- ========================================= -->
+            <!-- PREÇO DE VENDA -->
+            <!-- ========================================= -->
+
+            <div class="mb-3">
+
+                <label
+                    for="entrada-preco-venda"
+                    class="form-label">
+
+                    Preço de venda
+
+                </label>
+
+
+                <input
+                    id="entrada-preco-venda"
+                    type="number"
+                    min="0.01"
+                    step="0.01"
+                    class="form-control"
+                    placeholder="Ex: 30.00">
+
+
+                <small class="text-muted">
+
+                    Preço pelo qual cada unidade
+                    deste lote será vendida.
+
+                </small>
+
+            </div>
+
+
+            <!-- ========================================= -->
+            <!-- RESUMO -->
+            <!-- ========================================= -->
+
+            <div
+                class="alert alert-info"
+                style="margin-top:15px;">
+
+                <strong>
+                    Atenção:
+                </strong>
+
+                Esta entrada será criada como
+                <strong>um novo lote</strong>.
+
+                <br>
+
+                O stock dos lotes anteriores
+                não será alterado.
+
+            </div>
+
+
+            <!-- ========================================= -->
+            <!-- BOTÕES -->
+            <!-- ========================================= -->
+
+            <div
+                style="
+                    display:flex;
+                    gap:10px;
+                    margin-top:20px;
+                ">
+
+
+                <!-- CANCELAR -->
+
+                <button
+                    type="button"
+                    class="btn btn-secondary"
+                    style="flex:1;"
+                    onclick="fecharEntradaStock()">
+
+                    Cancelar
+
+                </button>
+
+
+                <!-- CONFIRMAR -->
+
+                <button
+                    type="button"
+                    class="btn btn-success"
+                    style="flex:1;"
+                    onclick="salvarEntradaStock()">
+
+                    <i class="bi bi-plus-circle"></i>
+
+                    Confirmar Entrada
+
+                </button>
+
+            </div>
+
+
+        </div>
+
+    </div>
+
+</div>
