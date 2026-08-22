@@ -2,7 +2,7 @@
       "relation": ["delegate_permission/common.handle_all_urls"],
       "target": {
         "namespace": "android_app",
-        "package_name": "com.onrender.mentes_abertassss.twa",
-        "sha256_cert_fingerprints": [""]
+        "package_name": "com.onrender.pdv_demo_vryt.twa",
+        "sha256_cert_fingerprints": ["E6:AB:EF:65:5B:0A:89:D7:A0:CE:DC:B1:7E:E8:46:A1:76:79:75:00:BB:87:56:99:2B:F5:3E:46:2E:DD:71:45"]
       }
     }]
